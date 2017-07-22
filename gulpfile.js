@@ -6,7 +6,7 @@ const autoprefixer = require('autoprefixer');
 const postcss = require('gulp-postcss');
 const mqpacker = require('css-mqpacker');
 const runSequence = require('run-sequence');
-
+const phpMinify = require('@cedx/gulp-php-minify');
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
@@ -20,12 +20,10 @@ gulp.task('styles', () => {
       precision: 2
     }).on('error', $.sass.logError))
     .pipe(postcss([mqpacker, autoprefixer()]))
-    //CSS Minification goes on HTML task
+    //OBS: CSS Minification goes on HTML task
     .pipe($.if(dev, $.sourcemaps.write(), gulp.dest('dist/')))
-    .pipe(gulp.dest('.tmp/'))
-    .pipe(reload({
-      stream: true
-    }));
+    .pipe(gulp.dest('./'))
+    .pipe(reload({stream:true}));
 });
 
 gulp.task('scripts', () => {
@@ -33,17 +31,13 @@ gulp.task('scripts', () => {
     .pipe($.if(dev, $.sourcemaps.init()))
     .pipe($.babel())
     .pipe($.if(dev, $.sourcemaps.write('.'), gulp.dest('dist/js')))
-    .pipe(gulp.dest('.tmp/js'))
-    .pipe(reload({
-      stream: true
-    }));
+    .pipe(gulp.dest('./.tmp/js'))
+    .pipe(reload({stream: true}));
 });
 
 function lint(files) {
   return gulp.src(files)
-    .pipe($.eslint({
-      fix: true
-    }))
+    .pipe($.eslint({fix: true}))
     .pipe(reload({
       stream: true,
       once: true
@@ -59,7 +53,8 @@ gulp.task('lint', () => {
 
 gulp.task('php', () => gulp.src('*.php', {read: false})
 .pipe(phpMinify())
-.pipe($.if(dev, gulp.dest('.tmp'), gulp.dest('dist')))
+.pipe($.if(dev, gulp.dest('./minPhP')))
+.pipe(gulp.dest('dist'))
 );
 
 gulp.task('html', ['styles', 'scripts'], () => {
@@ -119,13 +114,7 @@ gulp.task('serve', () => {
   runSequence(['clean'], ['styles', 'scripts', 'fonts'], () => {
     browserSync.init({
       notify: true,
-      port: 9000,
-      server: {
-        baseDir: ['.tmp', 'src'],
-        routes: {
-          '/node_modules': 'node_modules'
-        }
-      }
+      proxy: "localhost/sense/"
     });
 
     gulp.watch([
