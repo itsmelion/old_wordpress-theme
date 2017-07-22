@@ -1,18 +1,4 @@
-<?php
-/**
- * alive8 template for generating comments
- *
- * @package WordPress
- * @subpackage alive8
- * @since alive8 1.0
- */
-?>
-
-<?php
-	if ( post_password_required() ) {
-		return;
-	}
-?>
+<?php if ( post_password_required() ) { return; } ?>
 
 <div id="comments" class="comments">
 
@@ -21,7 +7,7 @@
 		<h2 class="comments-title">
 			<?php
 				printf(
-					_n( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'alive8' ),
+					_n( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'sense' ),
 					number_format_i18n( get_comments_number() ),
 					get_the_title()
 				);
@@ -30,9 +16,9 @@
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 		<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
-			<h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'alive8' ); ?></h1>
-			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'alive8' ) ); ?></div>
-			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'alive8' ) ); ?></div>
+			<h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'sense' ); ?></h1>
+			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'sense' ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'sense' ) ); ?></div>
 		</nav>
 		<?php endif; ?>
 
@@ -50,14 +36,14 @@
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 		<nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
-			<h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'alive8' ); ?></h1>
-			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'alive8' ) ); ?></div>
-			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'alive8' ) ); ?></div>
+			<h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'sense' ); ?></h1>
+			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'sense' ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'sense' ) ); ?></div>
 		</nav>
 		<?php endif; ?>
 
 		<?php if ( ! comments_open() ) : ?>
-		<p class="no-comments"><?php _e( 'Comments are closed.', 'alive8' ); ?></p>
+		<p class="no-comments"><?php _e( 'Comments are closed.', 'sense' ); ?></p>
 		<?php endif; ?>
 
 	<?php endif; ?>

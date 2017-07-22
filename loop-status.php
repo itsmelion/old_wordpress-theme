@@ -1,10 +1,10 @@
 <?php
 /**
- * alive8 template for displaying the Loop for the Status-Post-Format
+ * sense template for displaying the Loop for the Status-Post-Format
  *
  * @package WordPress
- * @subpackage alive8
- * @since alive8 1.0
+ * @subpackage sense
+ * @since sense 1.0
  */
 ?>
 

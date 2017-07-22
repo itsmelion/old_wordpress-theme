@@ -1,13 +1,4 @@
-<?php
-/**
- * alive8 template for displaying Archives
- *
- * @package WordPress
- * @subpackage alive8
- * @since alive8 1.0
- */
-
-get_header(); ?>
+<?php get_header(); ?>
 
 	<section class="page-content primary" role="main"><?php
 
@@ -16,30 +7,30 @@ get_header(); ?>
 			<h1 class="archive-title">
 				<?php
 					if ( is_category() ):
-						printf( __( 'Category Archives: %s', 'alive8' ), single_cat_title( '', false ) );
+						printf( __( 'Category Archives: %s', 'sense' ), single_cat_title( '', false ) );
 
 					elseif ( is_tag() ):
-						printf( __( 'Tag Archives: %s', 'alive8' ), single_tag_title( '', false ) );
+						printf( __( 'Tag Archives: %s', 'sense' ), single_tag_title( '', false ) );
 
 					elseif ( is_tax() ):
 						$term     = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
 						$taxonomy = get_taxonomy( get_query_var( 'taxonomy' ) );
-						printf( __( '%s Archives: %s', 'alive8' ), $taxonomy->labels->singular_name, $term->name );
+						printf( __( '%s Archives: %s', 'sense' ), $taxonomy->labels->singular_name, $term->name );
 
 					elseif ( is_day() ) :
-						printf( __( 'Daily Archives: %s', 'alive8' ), get_the_date() );
+						printf( __( 'Daily Archives: %s', 'sense' ), get_the_date() );
 
 					elseif ( is_month() ) :
-						printf( __( 'Monthly Archives: %s', 'alive8' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'alive8' ) ) );
+						printf( __( 'Monthly Archives: %s', 'sense' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'sense' ) ) );
 
 					elseif ( is_year() ) :
-						printf( __( 'Yearly Archives: %s', 'alive8' ), get_the_date( _x( 'Y', 'yearly archives date format', 'alive8' ) ) );
+						printf( __( 'Yearly Archives: %s', 'sense' ), get_the_date( _x( 'Y', 'yearly archives date format', 'sense' ) ) );
 
 					elseif ( is_author() ) : the_post();
-						printf( __( 'All posts by %s', 'alive8' ), get_the_author() );
+						printf( __( 'All posts by %s', 'sense' ), get_the_author() );
 
 					else :
-						_e( 'Archives', 'alive8' );
+						_e( 'Archives', 'sense' );
 
 					endif;
 				?>

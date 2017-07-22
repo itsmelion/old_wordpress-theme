@@ -1,10 +1,10 @@
 <?php
 /**
- * alive8 template for generating pagination
+ * sense template for generating pagination
  *
  * @package WordPress
- * @subpackage alive8
- * @since alive8 1.0
+ * @subpackage sense
+ * @since sense 1.0
  */
 ?>
 

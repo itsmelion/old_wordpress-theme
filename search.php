@@ -1,10 +1,10 @@
 <?php
 /**
- * alive8 template for displaying Search-Results-Pages
+ * sense template for displaying Search-Results-Pages
  *
  * @package WordPress
- * @subpackage alive8
- * @since alive8 1.0
+ * @subpackage sense
+ * @since sense 1.0
  */
 
 get_header(); ?>
@@ -14,11 +14,11 @@ get_header(); ?>
 		if ( have_posts() ) : ?>
 
 			<div class="search-title">
-				<h1 ><?php printf( __( 'Search Results for: %s', 'alive8' ), get_search_query() ); ?></h1>
+				<h1 ><?php printf( __( 'Search Results for: %s', 'sense' ), get_search_query() ); ?></h1>
 
 				<div class="second-search">
 					<p>
-						<?php _e( 'Not what you searched for? Try again with some different keywords.', 'alive8' ); ?>
+						<?php _e( 'Not what you searched for? Try again with some different keywords.', 'sense' ); ?>
 					</p>
 
 					<?php get_search_form(); ?>
@@ -31,11 +31,11 @@ get_header(); ?>
 
 				wp_link_pages(
 					array(
-						'before'           => '<div class="linked-page-nav"><p>' . sprintf( __( '<em>%s</em> is separated in multiple parts:', 'alive8' ), get_the_title() ) . '<br />',
+						'before'           => '<div class="linked-page-nav"><p>' . sprintf( __( '<em>%s</em> is separated in multiple parts:', 'sense' ), get_the_title() ) . '<br />',
 						'after'            => '</p></div>',
 						'next_or_number'   => 'number',
 						'separator'        => ' ',
-						'pagelink'         => __( '&raquo; Part %', 'alive8' ),
+						'pagelink'         => __( '&raquo; Part %', 'sense' ),
 					)
 				);
 

@@ -1,27 +1,61 @@
 <?php
 /**
- * alive8 template for displaying the standard Loop
+ * sense template for displaying the standard Loop
  *
  * @package WordPress
- * @subpackage alive8
- * @since alive8 1.0
+ * @subpackage sense
+ * @since sense 1.0
  */
 ?>
 
-<!--
-	the_permalink(); == get the post link
--->
-<?php $fields = get_fields(get_the_ID()); ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<div class="post-content">
-		<?php if ( '' != get_the_post_thumbnail() ) : ?>
-			<?php the_post_thumbnail(); ?>
-		<?php endif; ?>
-		<h1></h1>
-		<img src="<?= $fields['bigPicture']; ?>" width="80%" height="auto"/>
+	<h1 class="post-title"><?php
 
-		<?php the_content( __( 'Continue reading &raquo', 'alive8' ) ); ?>
+		if ( is_singular() ) :
+			the_title();
+		else : ?>
+
+			<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><?php
+				the_title(); ?>
+			</a><?php
+
+		endif; ?>
+
+	</h1>
+
+	<div class="post-meta"><?php
+		sense_post_meta(); ?>
+	</div>
+
+	<div class="post-content"><?php
+
+		if ( '' != get_the_post_thumbnail() ) : ?>
+			<?php the_post_thumbnail(); ?><?php
+		endif; ?>
+
+		<?php if ( is_front_page() || is_category() || is_archive() || is_search() ) : ?>
+
+			<?php the_excerpt(); ?>
+			<a href="<?php the_permalink(); ?>"><?php _e( 'Read more &raquo;', 'sense' ); ?></a>
+
+		<?php else : ?>
+
+			<?php the_content( __( 'Continue reading &raquo', 'sense' ) ); ?>
+
+		<?php endif; ?>
+
+		<?php
+			wp_link_pages(
+				array(
+					'before'           => '<div class="linked-page-nav"><p>'. __( 'This article has more parts: ', 'sense' ),
+					'after'            => '</p></div>',
+					'next_or_number'   => 'number',
+					'separator'        => ' ',
+					'pagelink'         => __( '&lt;%&gt;', 'sense' ),
+				)
+			);
+		?>
 
 	</div>
 

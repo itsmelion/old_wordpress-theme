@@ -13,16 +13,19 @@ const reload = browserSync.reload;
 var dev = true;
 
 gulp.task('styles', () => {
-  return gulp.src('src/scss/main.scss')
+  return gulp.src('src/scss/style.scss')
     .pipe($.if(dev, $.sourcemaps.init()))
     .pipe($.sass.sync({
       outputStyle: 'expanded',
       precision: 2
     }).on('error', $.sass.logError))
     .pipe(postcss([mqpacker, autoprefixer()]))
-    //OBS: CSS Minification goes on HTML task
-    .pipe($.if(dev, $.sourcemaps.write(), gulp.dest('dist/')))
-    .pipe(gulp.dest('./'))
+    .pipe($.if(!dev, $.cssnano({
+      safe: true,
+      autoprefixer: false
+    })))
+    .pipe($.if(dev, $.sourcemaps.write()))
+    .pipe(gulp.dest('.'))
     .pipe(reload({stream:true}));
 });
 
@@ -31,47 +34,24 @@ gulp.task('scripts', () => {
     .pipe($.if(dev, $.sourcemaps.init()))
     .pipe($.babel())
     .pipe($.if(dev, $.sourcemaps.write('.'), gulp.dest('dist/js')))
-    .pipe(gulp.dest('./.tmp/js'))
-    .pipe(reload({stream: true}));
-});
-
-function lint(files) {
-  return gulp.src(files)
-    .pipe($.eslint({fix: true}))
-    .pipe(reload({
-      stream: true,
-      once: true
-    }))
-    .pipe($.eslint.format())
-    .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
-}
-
-gulp.task('lint', () => {
-  return lint('src/js/**/*.js')
-    .pipe(gulp.dest('src/js'));
-});
-
-gulp.task('php', () => gulp.src('*.php', {read: false})
-.pipe(phpMinify())
-.pipe($.if(dev, gulp.dest('./minPhP')))
-.pipe(gulp.dest('dist'))
-);
-
-gulp.task('html', ['styles', 'scripts'], () => {
-  return gulp.src('src/*.html')
-    .pipe($.useref({
-      searchPath: ['.tmp', 'src', 'dist', '.']
-    }))
-    .pipe($.if(/\.js$/, $.uglify({
+    .pipe($.if(!dev, $.uglify({
       compress: {
         drop_console: true
       }
     })))
-    .pipe($.if(/\.css$/, $.cssnano({
-      safe: true,
-      autoprefixer: false
-    })))
-    .pipe($.if(/\.html$/, $.htmlmin({
+    .pipe($.if(dev, gulp.dest('./.tmp/js')))
+    .pipe(reload({stream: true}));
+});
+
+gulp.task('php', () => gulp.src('**/*.php', {read: false})
+.pipe(gulpIgnore.exclude(dev))
+.pipe(phpMinify())
+.pipe(gulp.dest('dist'))
+);
+
+gulp.task('html', ['styles', 'scripts'], () => {
+  return gulp.src('**/*.html')
+    .pipe($.if(!dev, $.htmlmin({
       collapseWhitespace: true,
       minifyCSS: true,
       minifyJS: {
@@ -81,9 +61,9 @@ gulp.task('html', ['styles', 'scripts'], () => {
       },
       processConditionalComments: true,
       removeComments: true,
-      removeEmptyAttributes: true,
-      removeScriptTypeAttributes: true,
-      removeStyleLinkTypeAttributes: true
+      removeEmptyAttributes: false,
+      removeScriptTypeAttributes: false,
+      removeStyleLinkTypeAttributes: false
     })))
     .pipe(gulp.dest('dist'));
 });
@@ -118,8 +98,7 @@ gulp.task('serve', () => {
     });
 
     gulp.watch([
-      'src/*.html',
-      '*.php',
+      '**/*.php',
       'src/images/**/*',
       '.tmp/fonts/**/*'
     ]).on('change', reload);
@@ -141,7 +120,7 @@ gulp.task('serve:dist', ['default'], () => {
 });
 
 
-gulp.task('build', ['lint', 'scripts', 'styles', 'html', 'php', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['lint', 'scripts', 'styles', 'php', 'html', 'images', 'fonts', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({
     title: 'build',
     gzip: true

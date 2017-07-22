@@ -39,10 +39,6 @@ footer {
   width: 100%;
   z-index: 100;
   height: 98vh;
-  @include media-breakpoint-up(md) {
-    height: auto;
-    padding: 3em 0;
-  }
   #footer-brand{
     text-align: center;
   }

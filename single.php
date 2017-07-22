@@ -1,13 +1,4 @@
-<?php
-/**
- * alive8 template for displaying Single-Posts
- *
- * @package WordPress
- * @subpackage alive8
- * @since alive8 1.0
- */
-
-get_header(); ?>
+<?php get_header(); ?>
 
 	<section class="page-content primary" role="main">
 
@@ -19,8 +10,8 @@ get_header(); ?>
 				<aside class="post-aside">
 
 					<div class="post-links">
-						<?php previous_post_link( '%link', __( '&laquo; Previous post', 'alive8' ) ) ?>
-						<?php next_post_link( '%link', __( 'Next post &raquo;', 'alive8' ) ); ?>
+						<?php previous_post_link( '%link', __( '&laquo; Previous post', 'sense' ) ) ?>
+						<?php next_post_link( '%link', __( 'Next post &raquo;', 'sense' ) ); ?>
 					</div>
 
 					<?php

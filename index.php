@@ -1,13 +1,4 @@
-<?php
-/**
- * alive8 Index template
- *
- * @package WordPress
- * @subpackage alive8
- * @since alive8 1.0
- */
-
-get_header(); ?>
+<?php get_header(); ?>
 
 	<section class="page-content primary" role="main">
 		<?php
@@ -19,11 +10,11 @@ get_header(); ?>
 
 					wp_link_pages(
 						array(
-							'before'           => '<div class="linked-page-nav"><p>' . sprintf( __( '<em>%s</em> is separated in multiple parts:', 'alive8' ), get_the_title() ) . '<br />',
+							'before'           => '<div class="linked-page-nav"><p>' . sprintf( __( '<em>%s</em> is separated in multiple parts:', 'sense' ), get_the_title() ) . '<br />',
 							'after'            => '</p></div>',
 							'next_or_number'   => 'number',
 							'separator'        => ' ',
-							'pagelink'         => __( '&raquo; Part %', 'alive8' ),
+							'pagelink'         => __( '&raquo; Part %', 'sense' ),
 						)
 					);
 

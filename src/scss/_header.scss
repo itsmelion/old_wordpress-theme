@@ -25,11 +25,6 @@ body.home{
 	background-repeat: no-repeat;
 	background-position: top;
 	background-image: url('./images/header.jpg');
-	@include media-breakpoint-down(sm) {
-		background-image: url('./images/header-iphone.jpg');
-		overflow: hidden;
-		background-attachment: scroll;
-	}
 }
 header.home{
 	position: relative;
@@ -70,18 +65,6 @@ header#headerVR {
 		margin-left: 10%;
 		box-sizing: border-box;
 	}
-	@include media-breakpoint-down(sm) {
-		background-size: auto 280px;
-		height: auto;
-		background-attachment: scroll;
-		.lead{
-			width: 95%;
-			margin: 2.5%;
-			margin-top: 1.5em;
-			margin-bottom: 290px;
-			p{font-size: 1rem; margin-top: 1em;}
-		}
-	}
 }
 header#headerVR2 {
 	color: #191919;
@@ -99,15 +82,6 @@ header#headerVR2 {
 		margin-left: 10%;
 		box-sizing: border-box;
 	}
-	@include media-breakpoint-down(sm) {
-		.lead{
-			width: 95%;
-			margin: 2.5%;
-			margin-top: 1.5em;
-			margin-bottom: 290px;
-			p{font-size: 1rem; margin-top: 1em;}
-		}
-	}
 }
 
 header#headerFX {
@@ -119,15 +93,6 @@ header#headerFX {
 	margin: 0;
 	background-color: black;
 	color: white;
-	@include media-breakpoint-down(sm) {
-		background-attachment: scroll;
-		background-image: url('./images/fx/fxSM.jpg');
-		animation: none;
-		background-size: cover;
-		background-position: center center;
-		opacity: 1;
-		.swipe{animation: none;}
-	}
 	.lead{
 		z-index: 1;
 		margin-top: -120px;
@@ -141,12 +106,6 @@ header#headerFX2 {
 	border: none;
 	margin: 0;
 	background-color: black;
-	@include media-breakpoint-down(sm) {
-		background-attachment: scroll;
-		animation: none;
-		background-size: cover;
-		background-position: center center;
-	}
 	color: white;
 	.lead{
 		z-index: 1;
@@ -164,9 +123,6 @@ header#headerFX2 {
 	-webkit-animation: flash ease-out 6s infinite;
 	-moz-animation: flash ease-out 6s infinite;
 	animation: flash ease-out 6s infinite;
-	@include media-breakpoint-down(sm) {
-		background-attachment: scroll;
-	}
 }
 
 @-webkit-keyframes flash {

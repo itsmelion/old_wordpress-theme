@@ -25,9 +25,8 @@
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>
-		<div class="site">
 
-			<header class="site-header">
+			<header>
 
 				<?php if ( '' != get_custom_header()->url ) : ?>
 					<img src="<?php header_image(); ?>" class="custom-header" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />

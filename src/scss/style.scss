@@ -1,26 +1,10 @@
-/*!
-	Theme Name: alive8
-	Author: Christhopher Lion
-	Version: 1.0
-	Author URI: alia.ml
-	Theme URI: live8.com.br
-	Tags: dark,fluid-layout,responsive-layout
-	Description: theme for live8 sound
-	License: GNU General Public License v2 or later
-	License URI: http://www.gnu.org/licenses/gpl-2.0.html
-*/
-
-@import "vendor/normalize";
-@import "vendor/bootstrap/scss/bootstrap.scss";
 @import "vendor/slick/slick.scss";
 @import "vendor/photoSwipe/photoswipe";
 @import "vendor/photoSwipe/default-skin/default-skin";
+@import "../../node_modules/flamework/grid.scss";
 @import "base";
 @import "typography";
 @import "components";
 @import "header";
 @import "content";
 @import "footer";
-@import "pages/sound-hunter";
-@import "pages/fx";
-@import "pages/vr";

@@ -1,13 +1,3 @@
-<?php
-/**
- * sense template for displaying the footer
- *
- * @package WordPress
- * @subpackage sense
- * @since sense 1.0
- */
-?>
-
 				<ul class="footer-widgets"><?php
 					if ( function_exists( 'dynamic_sidebar' ) ) :
 						dynamic_sidebar( 'footer-sidebar' );
