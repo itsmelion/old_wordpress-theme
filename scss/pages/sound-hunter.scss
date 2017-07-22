@@ -1,0 +1,106 @@
+#headerhunter {
+	position: relative;
+	height: 80%;
+	height: 80vh;
+	width: 100%;
+	border: none;
+	margin: 0;
+	background-image: url('./images/soundhunter/header1.jpg');
+	background-size: cover;
+	-webkit-background-size: cover;
+	background-attachment: fixed;
+	-webkit-background-attachment: fixed;
+	background-position: center bottom;
+	color: white;
+	@include media-breakpoint-down(sm) {
+		background-attachment: scroll;
+	}
+	.lead{
+		margin-top: -30%;
+		margin-top: -30vh;
+		z-index: 2;
+		text-shadow: 0 0 5px rgb(49, 2, 24);
+	}
+}
+
+#headerhunter2 {
+	position: relative;
+	height: 80%;
+	height: 80vh;
+	width: 100%;
+	border: none;
+	margin: 0;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-webkit-background-attachment: fixed;
+	background-attachment: fixed;
+	background-position: center center;
+	color: white;
+	@include media-breakpoint-down(sm) {
+		background-attachment: scroll;
+	}
+	.lead{
+		margin-top: -30%;
+		margin-top: -30vh;
+		z-index: 2;
+		text-shadow: 0 0 5px rgb(0, 0, 0);
+	}
+}
+
+.tip{
+	position: relative;
+	margin-top: -150px;
+	width: 80%;
+	left: 10%;
+	background: white;
+	border-radius: $radius;
+	@include shadow;
+	article {
+		margin-top: 50px;
+		padding: 1.5rem 1rem;
+		width: 100%;
+	}
+	img{
+		position: absolute;
+		width: 80px;
+		margin: auto;
+		margin-top: -42px;
+		display: block;
+		right: 6px;
+	}
+}
+
+.triplex {
+	@include shadow;
+	article {
+		padding: 1.5rem 1rem;
+		width: 100%;
+		padding-right: 75px;
+	}
+	.triplex-pic img,
+	.triplex-icon img {
+		position: relative;
+		width: 170px;
+		height: auto;
+		display: block;
+		margin: auto;
+	}
+	.triplex-icon {
+		img {
+			width: 70px;
+			height: 70px;
+			top: 50%;
+			margin-top: -35px;
+		}
+	}
+	.triplex-pic {
+		padding: 0;
+		background-position: center right;
+		background-size: 50% auto;
+		background-repeat: no-repeat;
+		border-radius: 0 150px 150px 0;
+		img {
+			border-radius: 0 150px 150px 0;
+		}
+	}
+}

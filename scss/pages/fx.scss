@@ -1,0 +1,9 @@
+.duplex {
+	background-color: #fafafa;
+	.artigo{
+		padding: 4em;
+		@media screen and (max-width: 600px)	{
+			padding: 1em
+		}
+	}
+}

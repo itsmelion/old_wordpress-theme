@@ -1,0 +1,108 @@
+.arrow{
+  width: 100%;
+  height: 96px;
+  position: relative;
+  &:before{
+      content: 'arraste ou clique';
+      position: absolute;
+      top: 29px;
+      font-size: .8rem;
+      line-height: 1;
+      color: #888888;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      animation: pulse ease-in-out 1.2s infinite;
+      animation-direction: alternate;
+    }
+  img{
+    margin-top: 3px;
+    width: 24px;
+    height: auto;
+    animation: pulse ease-in-out 1.2s infinite;
+    animation-direction: alternate;
+  }
+  &.light{
+    background-color: rgba(white, .05);
+  }
+  &.dark{
+    background-color: black, .1;
+  }
+  &.down{ height: 48px; img{transform: rotate(180deg);}}
+}
+
+footer {
+  background-color: $background;
+  position: fixed;
+  bottom: -150%;
+  bottom: -150vh;
+  width: 100%;
+  z-index: 100;
+  height: 98vh;
+  @include media-breakpoint-up(md) {
+    height: auto;
+    padding: 3em 0;
+  }
+  #footer-brand{
+    text-align: center;
+  }
+  address {
+    text-align: center;
+    font-style: none;
+    font-style: normal;
+    font-weight: 400;
+    font-size: .8rem;
+    p{margin: 1.5rem 0 .5rem 0;}
+  }
+  li {
+    list-style: none;
+  }
+}
+.social-links{
+  position: relative;
+  padding: 0;
+  margin: 0 auto;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 300px;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  align-items: flex-end;
+  justify-content: flex-end;
+  >a{
+    display: block;
+    margin: auto;
+    position: relative;
+    img{ width: 100%; height: auto;}
+  }
+}
+#instagram{
+  width: 58%;
+}
+#facebook{
+  margin-left: -18%;
+  margin-top: 38%;
+  width: 23%;
+}
+#alia-footer {
+  padding: .5rem 3rem;
+  background-color: #181818;
+  color: #333333;
+  img {
+    width: 36px;
+    height: 36px;
+    margin: 0 18px 0 0;
+  }
+}
+
+a.iconic{
+  display: block;
+  margin: auto;
+  margin-bottom: .5rem;
+  position: relative;
+  img{
+    width: 24px;
+    height: auto;
+  }
+}

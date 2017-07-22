@@ -1,0 +1,62 @@
+.overlay {
+	position: absolute;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.85);
+	opacity: 0;
+	transition: all 450ms cubic-bezier(0.32,1,0.23,1) 0ms;
+	z-index: 1000;
+	pointer-events: all;
+	.social {
+		position: fixed;
+		bottom: 0;
+		width: 90%;
+		left: 5%;
+		background-color: #f2f2f2;
+		box-sizing: border-box;
+		transform: translate(0,100%);
+		transition: all 450ms cubic-bezier(0.32,1,0.23,1) 100ms;
+		img{
+			margin: auto;
+			margin-top: -50px;
+			display: block;
+			width: auto;
+			height: 100px;
+			margin-bottom: .5rem;
+		}
+		p{padding: 1.5rem;}
+		a.btn{
+			margin-bottom: 2rem;
+		}
+
+	}
+	.btn-close {
+		color: #666;
+		transform: scale(0,0);
+		transition: all 450ms ease-in-out 0;
+	}
+	
+	&:target {
+   // Active animate in modal
+    display: block;
+		position: fixed;
+		top: 0;
+		opacity: 1;
+
+		.social {
+		transform: translate(0, 0);
+		z-index: 1001;
+		}
+		.btn-close {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			outline: 0 none;
+			transform: scale(1,1);
+		}
+	}
+}
