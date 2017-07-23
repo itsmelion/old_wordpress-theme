@@ -1,31 +1,12 @@
-/******************************************************************************\
-	Settings
-\******************************************************************************/
-
-@import url('https://fonts.googleapis.com/css?family=Heebo:100,400,900');
-@font-face {
-    font-family: 'walkway';
-    src: url('./fonts/walkway/walkway.eot');
-    src: url('./fonts/walkway/walkway.eot?#iefix') format('embedded-opentype'),
-         url('./fonts/walkway/walkway.woff') format('woff'),
-         url('./fonts/walkway/walkway.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,800,800i');
 
 // Variables
-$base-font: 'Heebo',
-'Open Sans',
-'Roboto',
-'Helvetica Neue',
-sans-serif;
-$header-font: 'Heebo',
-'Open Sans',
+$base-font: 'Open Sans',
 'Roboto',
 'Helvetica Neue',
 sans-serif;
 $base-line-height: 1.4;
-$base-font-size: 16px;
+$base-font-size: 100%;
 // Set standard font sizes in media querys
 html {
     font-size: $base-font-size;
@@ -37,17 +18,6 @@ html {
     font-size: #{$size}rem;
 }
 
-// Top margin mixin for REM output with PX fallback
-@mixin leading-rows($size: 1) {
-    margin-top: $size * $base-line-height * 1rem;
-}
-
-// Bottom margin mixin for REM output with PX fallback
-@mixin trailing-rows($size: 1) {
-    margin-bottom: $size * $base-line-height * 1rem;
-}
-
-
 /******************************************************************************\
 	Standard font styling
 \******************************************************************************/
@@ -55,7 +25,7 @@ html {
 body {
     font-family: $base-font;
     line-height: $base-line-height;
-    font-weight: 400;
+    font-weight: lighter;
 }
 
 em,
@@ -68,12 +38,6 @@ strong,
 b {
     font-weight: bold;
     line-height: inherit;
-}
-
-p,
-ul,
-ol {
-margin: 0;
 }
 
 blockquote {
@@ -96,47 +60,28 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: $header-font;
+    font-family: $base-font;
     line-height: 1.2;
     margin: 0;
-}
-
-h1.display {
-    font-weight: 100;
-    @include font-size(2.5);
-    font-size: 5vw;
-    text-transform: none !important;
-    @media screen and (max-width: 840px) {
-      font-size: 14vw;
-    }
+    font-weight: bolder;
 }
 
 h1 {
     @include font-size(2.5);
-    font-weight: lighter;
-    &.h1 {
-        @include leading-rows(1);
-        @include trailing-rows(1);
-        text-transform: uppercase;
+    font-size: 4vw;
+    text-transform: uppercase;
+    font-style: oblique;
+    letter-spacing: -.05em;
+    @media screen and (max-width: 840px) {
+      font-size: 8vw;
     }
 }
 
-h2 {
-    @include font-size(1.8);
-    &.h2 {
-        @include leading-rows(1);
-        @include trailing-rows(1);
-        text-transform: uppercase;
-    }
-}
+h2 { @include font-size(1.8); }
 
 h3 {
     @include font-size(1.1);
     text-transform: uppercase;
-    &.h3 {
-        @include leading-rows(1);
-        @include trailing-rows(1);
-    }
 }
 
 h4,
@@ -155,8 +100,4 @@ h2,
 h3 {
     orphans: 3;
     widows: 3;
-}
-
-p~h1 {
-    @include leading-rows(2);
 }

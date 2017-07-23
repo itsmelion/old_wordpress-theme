@@ -2,7 +2,8 @@
 $color1: rgba(0, 0, 0, .8);
 $color2: rgba(0, 0, 0, .5);
 $color3: #f5f5f5;
-$alien: #A3E337;
+$main-color: #e2a646;
+$alien: $main-color;
 $black8: rgba(0, 0, 0, .7);
 $black5: rgba(0, 0, 0, .5);
 $black3: rgba(0, 0, 0, .25);
@@ -12,8 +13,8 @@ $white3: rgba(255, 255, 255, .3); // default styling
 $hunter: #660031;
 $fx: #A3E337;
 $vr: #C70327;
-$background: #f5f5f5;
-$radius: 12px;
+$background: #e0e0e0;
+$radius: 6px;
 
 @-webkit-keyframes pulse {
 	from { opacity: 0; }
@@ -33,22 +34,22 @@ body {
 }
 
 ::selection {
-	background: $alien;
+	background: $main-color;
 	color: white;
 }
 
 ::-moz-selection {
-	background: $alien;
+	background: $main-color;
 	color: white;
 }
 
 a {
-	color: $alien;
+	color: $main-color;
 	text-decoration: none;
 	cursor: pointer;
 	&:hover {
 		text-decoration: none;
-		color: lighten($alien, 15%);
+		color: lighten($main-color, 15%);
 	}
 }
 
@@ -56,11 +57,20 @@ h1 a {
 	color: $color2;
 	&:hover {
 		text-decoration: none;
-		color: lighten($alien, 15%);
+		color: lighten($main-color, 15%);
 	}
 }
 
 img {
 	max-width: 100%;
 	height: auto;
+}
+
+section{
+	padding: 6px;
+}
+
+@mixin icon-small{
+	width: auto;
+	height: 36px;
 }

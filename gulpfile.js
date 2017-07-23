@@ -39,7 +39,7 @@ gulp.task('scripts', () => {
         drop_console: true
       }
     })))
-    .pipe($.if(dev, gulp.dest('./.tmp/js')))
+    .pipe($.if(dev, gulp.dest('dist/js')))
     .pipe(reload({stream: true}));
 });
 
@@ -70,13 +70,13 @@ gulp.task('html', ['styles', 'scripts'], () => {
 
 gulp.task('images', () => {
   return gulp.src('src/images/**/*')
-    .pipe(gulp.dest('dist/images'));
+  .pipe(gulp.dest('dist/images'));
 });
 
 gulp.task('fonts', () => {
   return gulp.src(require('main-bower-files')('**/*.{eot,svg,ttf,woff,woff2}', function (err) {})
       .concat('src/fonts/**/*'))
-    .pipe($.if(dev, gulp.dest('.tmp/fonts'), gulp.dest('dist/fonts')));
+    .pipe(gulp.dest('dist/fonts'));
 });
 
 gulp.task('extras', () => {
@@ -91,7 +91,7 @@ gulp.task('extras', () => {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 gulp.task('serve', () => {
-  runSequence(['clean'], ['styles', 'scripts', 'fonts'], () => {
+  runSequence(['clean'], ['styles', 'scripts', 'fonts', 'images'], () => {
     browserSync.init({
       notify: true,
       proxy: "localhost/sense/"

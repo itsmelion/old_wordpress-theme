@@ -1,0 +1,26 @@
+nav{
+  width: 100%;
+  background-color: rgba(darken($main-color, 55%), .8);
+  max-height: 64px;
+  padding: 6px 6px 0 6px;
+  position: fixed;
+	top: 0;
+  z-index: 90;
+  box-sizing: border-box;
+  color: white;
+  a{
+		position: relative;
+		display: block;
+		border-radius: $radius $radius 0 0;
+    padding-bottom: 6px;
+		&:hover{
+			background-color: rgba(black, .3);
+		}
+	}
+}
+
+nav{
+  .menu-logo{
+    img{@include icon-small;}
+  }
+}
