@@ -1,11 +1,27 @@
 <?php
-/**
- * sense functions file
- *
- * @package WordPress
- * @subpackage sense
- * @since sense 1.0
- */
+if( function_exists('acf_add_options_page') ) {
+	
+	acf_add_options_page(array(
+		'page_title' 	=> 'Configurações Gerais',
+		'menu_title'	=> 'Sense: Geral',
+		'menu_slug' 	=> 'general-settings',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false
+	));
+	
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Theme Header Settings',
+		'menu_title'	=> 'Cabeçalho',
+		'parent_slug'	=> 'general-settings',
+	));
+	
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Theme Footer Settings',
+		'menu_title'	=> 'Rodapé',
+		'parent_slug'	=> 'general-settings',
+	));
+	
+}
 // =========================================================================
 // REMOVE JUNK FROM HEAD
 // =========================================================================
@@ -35,9 +51,9 @@ add_theme_support( 'post-thumbnails' );
 add_theme_support( 'automatic-feed-links' );
 
 $custom_header_args = array(
-	'width'         => 980,
-	'height'        => 300,
-	'default-image' => get_template_directory_uri() . '/images/header.png',
+	'width'         => auto,
+	'height'        => auto,
+	'default-image' => get_template_directory_uri() . 'dist/images/header.png',
 );
 add_theme_support( 'custom-header', $custom_header_args );
 
@@ -49,8 +65,8 @@ function sense_custom_header() {
 	$styles = '';
 	if ( $color = get_header_textcolor() ) {
 		echo '<style type="text/css"> ' .
-				'.site-header .logo .blog-name, .site-header .logo .blog-description {' .
-					'color: #' . $color . ';' .
+				'html,body .site-header .logo .blog-name, .site-header .logo .blog-description .text-color {' .
+					'color: #' . $color . ' !important;' .
 				'}' .
 			 '</style>';
 	}
@@ -83,7 +99,7 @@ if ( function_exists( 'register_sidebars' ) ) {
 	);
 }
 
-if ( ! isset( $content_width ) ) $content_width = 650;
+if ( ! isset( $content_width ) ) $content_width = 1024;
 
 /**
  * Include editor stylesheets

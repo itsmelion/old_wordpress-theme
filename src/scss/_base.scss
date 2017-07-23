@@ -14,7 +14,7 @@ $hunter: #660031;
 $fx: #A3E337;
 $vr: #C70327;
 $background: #e0e0e0;
-$radius: 6px;
+$radius: 6pt;
 
 @-webkit-keyframes pulse {
 	from { opacity: 0; }
@@ -30,34 +30,23 @@ $radius: 6px;
 
 body {
 	position: relative;
-	color: $color2;
+	color: inherit;
 }
 
 ::selection {
-	background: $main-color;
 	color: white;
 }
 
 ::-moz-selection {
-	background: $main-color;
 	color: white;
 }
 
-a {
-	color: $main-color;
+a[href] {
 	text-decoration: none;
 	cursor: pointer;
+	transition: color .2s;
 	&:hover {
 		text-decoration: none;
-		color: lighten($main-color, 15%);
-	}
-}
-
-h1 a {
-	color: $color2;
-	&:hover {
-		text-decoration: none;
-		color: lighten($main-color, 15%);
 	}
 }
 
@@ -67,10 +56,10 @@ img {
 }
 
 section{
-	padding: 6px;
+	padding: $radius;
 }
 
 @mixin icon-small{
 	width: auto;
-	height: 36px;
+	height: 5*$radius;
 }

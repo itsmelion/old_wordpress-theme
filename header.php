@@ -65,7 +65,28 @@ brazil, brasil, empresa, software" />
 	<!--[if lt IE 9]>
 		<script src="<?php echo get_template_directory_uri(); ?>/js/html5shiv.js"></script>
 	<![endif]-->
-	<?php wp_head(); ?>
+  <?php wp_head(); ?>
+  
+<style>
+  a, h1{
+  color: <?php the_field('main-color', 'option'); ?>;
+}
+
+::selection {
+	background: <?php the_field('main-color', 'option'); ?>;
+	color: white;
+}
+
+::-moz-selection {
+	background: <?php the_field('main-color', 'option'); ?>;
+	color: white;
+}
+
+nav{
+  background-color: rgba(<?php the_field('main-color-dark', 'option'); ?>, .9);
+}
+  #wpadminbar{display:none}
+</style>
 </head>
 <body <?php body_class(); ?> >
 
@@ -75,8 +96,8 @@ brazil, brasil, empresa, software" />
 	$nav_menu = wp_nav_menu(
 		array(
 			'container' => 'div',
-			'container_class' => 'main-menu',
-			'items_wrap' => '<ul class="%2$s">%3$s</ul>',
+			'container_class' => 'flex-grow main-menu',
+			'items_wrap' => '<ul class="%2$s layout-row flex-end">%3$s</ul>',
 			'theme_location' => 'main-menu',
 			'fallback_cb' => '__return_false',
 		)
