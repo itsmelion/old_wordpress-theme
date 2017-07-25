@@ -1,22 +1,14 @@
 <?php get_header(); ?>
 
-	<section class="page-content primary" role="main">
+<div class="layout-row-nowrap" style="margin-top: 48pt">
+	<aside class="filters flex-noshrink">Upcoming Filter Features</aside>
+	<section class="page-content primary wrap" role="main" >
 		<?php
 			if ( have_posts() ):
 
 				while ( have_posts() ) : the_post();
 
 					get_template_part( 'loop', get_post_format() );
-
-					wp_link_pages(
-						array(
-							'before'           => '<div class="linked-page-nav"><p>' . sprintf( __( '<em>%s</em> is separated in multiple parts:', 'sense' ), get_the_title() ) . '<br />',
-							'after'            => '</p></div>',
-							'next_or_number'   => 'number',
-							'separator'        => ' ',
-							'pagelink'         => __( '&raquo; Part %', 'sense' ),
-						)
-					);
 
 				endwhile;
 
@@ -26,11 +18,8 @@
 
 			endif;
 		?>
-		<div class="pagination">
-
-			<?php get_template_part( 'template-part', 'pagination' ); ?>
-
-		</div>
+	
 	</section>
+</div>
 
 <?php get_footer(); ?>

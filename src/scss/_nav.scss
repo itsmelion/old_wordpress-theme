@@ -1,19 +1,36 @@
-nav{
+#nav{
   width: 100%;
-  max-height: 48pt;
-  padding: 6pt 6pt 0 6pt;
+  min-height: $radius*7;
   position: fixed;
 	top: 0;
   z-index: 90;
   box-sizing: border-box;
   color: white;
-  a{
-		position: relative;
-		display: block;
+  padding: $radius $radius 0 $radius;
+}
+
+nav{
+  li{
+    list-style: none;
+    margin-right: $radius/2;
+    a{
+      position: relative;
+      height: 100%;
+      display: block;
+      color: white;
+    }
+    &.current-menu-item a{
+      background-color: rgba(black, .3);
+    }
+  }
+  .menu-item a{
 		border-radius: $radius $radius 0 0;
-    padding-bottom: 6pt;
+    padding: 0 3*$radius 0 $radius;
     text-transform: uppercase;
     letter-spacing: 0.5pt;
+    min-height: 6*$radius;
+    line-height: 6*$radius;
+    transition: .1s;
 		&:hover{
 			background-color: rgba(black, .3);
 		}
@@ -25,10 +42,64 @@ nav{
     img{@include icon-small;}
   }
   .menu-item-has-children{
-    .sub-menu{
-      border: 1.2pt solid #ccc;
-      background: white;
-      border-radius: 0 0 $radius $radius;
+    position: relative;
+    a{padding-right: 6*$radius;}
+    &::after{
+      content: '';
+      position: absolute;
+      right: $radius;
+      top: 50%;
+      margin-top: -1.75*$radius;
+      width: 3.5*$radius;
+      height: 3.5*$radius;
+      pointer-events: none;
     }
   }
+}
+
+.sub-menu{
+  border: 1.2pt solid #cccccc;
+  background: white;
+  border-radius: 0 0 $radius $radius; 
+  max-width: 250pt;
+  min-width: 190pt;
+  padding: $radius;
+  a{
+    color: $black8;
+    line-height: $radius*4;
+    &:hover{
+      opacity: .7;
+    }
+  }
+  >div {
+    > li{
+      width: 8*$radius;
+      padding: $radius $radius $radius 0;
+      margin-right: $radius;
+      list-style: none;
+      text-align: center;
+      span{
+        @include font-size(.8);
+        user-select: none;
+        cursor: default;
+      }
+      img{
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+  > ol {
+    margin-top: $radius*2;
+    li{
+      border-bottom: 1pt solid rgba(black, .08);
+      a{
+        display: block;
+        padding: $radius;
+        &:hover{background-color: rgba(black, .05)}
+      }
+      &:first-of-type{border-top: 1pt solid rgba(black, .08)}
+      }
+  }
+  
 }

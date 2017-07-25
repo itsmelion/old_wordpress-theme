@@ -71,6 +71,9 @@ brazil, brasil, empresa, software" />
   a, h1{
   color: <?php the_field('main-color', 'option'); ?>;
 }
+a:hover{
+    color: <?php the_field('main-color-dark', 'option'); ?>;
+}
 
 ::selection {
 	background: <?php the_field('main-color', 'option'); ?>;
@@ -82,25 +85,66 @@ brazil, brasil, empresa, software" />
 	color: white;
 }
 
-nav{
+#nav{
+  background-color: <?php the_field('main-color-dark', 'option'); ?>;
   background-color: rgba(<?php the_field('main-color-dark', 'option'); ?>, .9);
 }
-  #wpadminbar{display:none}
+.menu-item-has-children::after{
+  background: url('<?php echo get_bloginfo('template_url') ?>/dist/images/arrow.svg');
+}
 </style>
 </head>
 <body <?php body_class(); ?> >
 
-<nav class="layout-row menu">
-	<a title="Página inicial" href="<?php echo home_url();?>" class="menu-logo"><img src="<?php echo get_bloginfo('template_url') ?>/dist/images/logo.svg" alt="Home"/></a>
-	<?php
-	$nav_menu = wp_nav_menu(
-		array(
-			'container' => 'div',
-			'container_class' => 'flex-grow main-menu',
-			'items_wrap' => '<ul class="%2$s layout-row flex-end">%3$s</ul>',
-			'theme_location' => 'main-menu',
-			'fallback_cb' => '__return_false',
-		)
-	); ?>
+<div id="nav">
+  <nav class="container layout-row-nowrap-between">
+  <li class="flex-none">
+    <a title="<?php bloginfo( 'description' ); ?>" href="<?php echo home_url();?>" class="menu-logo hide-sm show-lg">
+    <img src="<?php echo get_bloginfo('template_url') ?>/dist/images/logotipo.svg" alt="<?php bloginfo( 'name' ); ?>"/>
+    </a>
+    <a title="<?php bloginfo( 'description' ); ?>" href="<?php echo home_url();?>" class="menu-logo hide-lg show-sm">
+    <img src="<?php echo get_bloginfo('template_url') ?>/dist/images/logo.svg" alt="<?php bloginfo( 'name' ); ?>"/>
+    </a>
+  </li>
+  <li class="flex">
+    <div class="showcase hero">
+      <div class="showcase-inner">
+        <a class="drop-target"></a>
+      </div>
+    </div>
+  </li>
+  <ul class="layout-row-end flex-noshrink">
+    <li id="menu-sense" class="menu-item menu-item-has-children"><a href="sense">A Sense</a></li>
+    <li id="menu-bike" class="menu-item menu-item-has-children"><a href="bikes">Bikes</a></li>
+  </ul>
+    
+    <!-- <?php
+    $nav_menu = wp_nav_menu(
+      array(
+        'container' => 'div',
+        'container_class' => 'flex-noshrink main-menu',
+        'items_wrap' => '<ul class="%2$s layout-row flex-end">%3$s</ul>',
+        'theme_location' => 'main-menu',
+        'fallback_cb' => '__return_false',
+      )
+    ); ?> -->
+  </nav>
+</div>
 
-</nav>
+<script>
+    const bikeMenu = function() {
+		  const html = '<?php 
+	include( locate_template( '/partials/dropdown-bike.html', false, false ) );
+?>';
+			return html;
+		};
+		const senseMenu = function() {
+			const html = '<?php 
+	include( locate_template( '/partials/dropdown-sense.html', false, false ) );
+?>';
+			return html;
+			/* $.get('dropdown-bike.html').done(function(html){
+				return html;
+			 }); */
+		};
+  </script>

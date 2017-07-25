@@ -1,5 +1,173 @@
 (function ($) {
-	// jquery goodness
+	/* var menuBike = new Tether({
+		element: '#submenu-bike',
+		target: '#menu-bike',
+		attachment: 'top left',
+		targetAttachment: 'bottom left',
+		targetOffset: '0 -12pt',
+		constraints: [
+			{
+				to: 'window',
+				attachment: 'together'
+			}
+		]
+	});
+	var menuSense = new Tether({
+		element: '#submenu-sense',
+		target: '#menu-sense',
+		attachment: 'top left',
+		targetAttachment: 'bottom left',
+		targetOffset: '0 -12pt',
+		constraints: [
+			{
+				to: 'scrollParent',
+				attachment: 'none together',
+				pin: true
+			}
+		],
+		optimizations: {
+			moveElement: false
+		}
+	});
+	menuBike.position();
+	menuSense.position();
+	$('.sub-menu').hide();
+	$('#menu-bike').hover(
+		function(){
+			$('#submenu-bike').slideDown( "fast" );
+			$('#submenu-sense').slideUp( "fast" );
+		},
+		function(){
+			$('#submenu-bike').slideUp( "fast" );
+		}
+	);
+	$('#menu-sense').hover(
+		function(){
+			$('#submenu-sense').slideDown( "fast" );
+			$('#submenu-bike').slideUp( "fast" );
+		},
+		function(){
+			$('#submenu-sense').slideUp( "fast" );
+		}
+	); */
+
+
+
+
+
+
+
+
+
+
+
+
+		var init, isMobile, setupExamples, _Drop;
+	
+		_Drop = Drop.createContext({
+			classPrefix: 'drop'
+		});
+	
+		isMobile = $(window).width() < 567;		
+		
+		
+		dropBikeMenu = function() {
+			var drop;
+			return drop = new _Drop({
+				target: $('#menu-bike')[0],
+				content: bikeMenu,
+				classes: 'drop-hero',
+				position: 'bottom left',
+				constrainToWindow: true,
+				constrainToScrollParent: false,
+				openOn: 'hover focus',
+				tetherOptions: {
+					targetOffset: '0 -12pt',
+					constraints: [
+						{
+							to: 'scrollParent',
+							attachment: 'none together',
+							pin: true
+						}
+					],
+					optimizations: {
+						moveElement: false
+					}
+				}
+			});
+		};
+		dropSenseMenu = function() {
+			var drop;
+			return drop = new _Drop({
+				target: $('#menu-sense')[0],
+				content: senseMenu,
+				classes: 'drop-hero',
+				position: 'bottom left',
+				constrainToWindow: true,
+				constrainToScrollParent: false,
+				openOn: 'hover focus',
+				tetherOptions: {
+					targetOffset: '0 -12pt',
+					constraints: [
+						{
+							to: 'scrollParent',
+							attachment: 'none together',
+							pin: true
+						}
+					],
+					optimizations: {
+						moveElement: false
+					}
+				}
+			});
+		};
+
+		init = function() {
+			dropSenseMenu();
+			dropBikeMenu();
+			return setupExamples();
+		};
+	
+		setupExamples = function() {
+			return $('.example').each(function() {
+				var $example, $target, content, drop, openOn, theme;
+				$example = $(this);
+				theme = $example.data('theme');
+				openOn = $example.data('open-on') || 'click';
+				$target = $example.find('.drop-target');
+				$target.addClass(theme);
+				content = $example.find('.drop-content').html();
+				return drop = new _Drop({
+					target: $target[0],
+					classes: theme,
+					position: 'bottom center',
+					constrainToWindow: true,
+					constrainToScrollParent: false,
+					openOn: openOn,
+					content: content
+				});
+			});
+		};
+	
+		init();
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	// Variables
 	var clickedTab = $(".tabs > .active");
@@ -95,10 +263,6 @@
   ]
 	});
 
-	$('.apple-card, .menu-open-button').click(function(){
-		$(this).toggleClass('touched');
-	});
-
 	$('.card-container').photoSwipe();
 
   $(function () {
@@ -111,35 +275,7 @@
 			$("footer").animate({bottom: '-105vh'});
 		}
 		);
-		$(".arrow").swipe( {
-      swipe: function (event, direction, distance, duration) {
-				if (direction === 'up') {
-          $("footer").animate(
-            {
-              bottom: '0'
-            }
-					);
-				}
-			},
-			allowPageScroll:"none"
-		});
 		
-		$("footer").swipe( {
-			swipe:function(event, direction, distance, duration) {
-
-				if (direction === 'down') {
-					console.log("Down");
-					$("footer").animate(
-						{
-							bottom: '-105vh'
-						}
-					);
-				}
-			
-			},
-			allowPageScroll:"none"
-		});
-	
 	});
 
 })(jQuery);

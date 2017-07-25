@@ -17,7 +17,7 @@ gulp.task('styles', () => {
     .pipe($.if(dev, $.sourcemaps.init()))
     .pipe($.sass.sync({
       outputStyle: 'expanded',
-      precision: 2
+      precision: 3
     }).on('error', $.sass.logError))
     .pipe(postcss([mqpacker, autoprefixer()]))
     .pipe($.if(!dev, $.cssnano({

@@ -51,8 +51,8 @@ add_theme_support( 'post-thumbnails' );
 add_theme_support( 'automatic-feed-links' );
 
 $custom_header_args = array(
-	'width'         => auto,
-	'height'        => auto,
+	'width'         => 1920,
+	'height'        => 1080,
 	'default-image' => get_template_directory_uri() . 'dist/images/header.png',
 );
 add_theme_support( 'custom-header', $custom_header_args );
@@ -113,7 +113,69 @@ add_action( 'init', 'sense_editor_style' );
 /******************************************************************************\
 	Scripts and Styles
 \******************************************************************************/
-
+// Intented to use with locations, like 'primary'
+// clean_custom_menu("primary");
+ 
+#add in your theme functions.php file
+ 
+function clean_custom_menu( $theme_location ) {
+    if ( ($theme_location) && ($locations = get_nav_menu_locations()) && isset($locations[$theme_location]) ) {
+        $menu = get_term( $locations[$theme_location], 'nav_menu' );
+        $menu_items = wp_get_nav_menu_items($menu->term_id);
+ 
+        $menu_list  = '<nav>' ."\n";
+        $menu_list .= '<ul class="main-nav">' ."\n";
+ 
+        $count = 0;
+        $submenu = false;
+         
+        foreach( $menu_items as $menu_item ) {
+             
+            $link = $menu_item->url;
+            $title = $menu_item->title;
+             
+            if ( !$menu_item->menu_item_parent ) {
+                $parent_id = $menu_item->ID;
+                 
+                $menu_list .= '<li class="item">' ."\n";
+                $menu_list .= '<a href="'.$link.'" class="title">'.$title.'</a>' ."\n";
+            }
+ 
+            if ( $parent_id == $menu_item->menu_item_parent ) {
+ 
+                if ( !$submenu ) {
+                    $submenu = true;
+                    $menu_list .= '<ul class="sub-menu">' ."\n";
+                }
+ 
+                $menu_list .= '<li class="item">' ."\n";
+                $menu_list .= '<a href="'.$link.'" class="title">'.$title.'</a>' ."\n";
+                $menu_list .= '</li>' ."\n";
+                     
+ 
+                if ( $menu_items[ $count + 1 ]->menu_item_parent != $parent_id && $submenu ){
+                    $menu_list .= '</ul>' ."\n";
+                    $submenu = false;
+                }
+ 
+            }
+ 
+            if ( $menu_items[ $count + 1 ]->menu_item_parent != $parent_id ) { 
+                $menu_list .= '</li>' ."\n";      
+                $submenu = false;
+            }
+ 
+            $count++;
+        }
+         
+        $menu_list .= '</ul>' ."\n";
+        $menu_list .= '</nav>' ."\n";
+ 
+    } else {
+        $menu_list = '<!-- no menu defined in location "'.$theme_location.'" -->';
+    }
+    echo $menu_list;
+}
 /**
  * Enqueue sense scripts
  * @return void
@@ -126,6 +188,8 @@ function sense_enqueue_scripts() {
     wp_register_script('jquery-slick', '//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js', false, '1.6.0', true);
     wp_enqueue_script('jquery-slick');
     wp_enqueue_script( 'lightbox', get_template_directory_uri() . '/dist/js/jquery-photoswipe/jquery.photoswipe-global.js', array(), '1.0', true );
+	wp_enqueue_script( 'tether', get_template_directory_uri() . '/node_modules/tether/dist/js/tether.min.js', array(), '1.4.0', true );
+	wp_enqueue_script( 'tether-drop', get_template_directory_uri() . '/node_modules/tether-drop/dist/js/drop.min.js', array(), '1.4.2', true );
     wp_enqueue_script( 'default-scripts', get_template_directory_uri() . '/dist/js/scripts.js', array(), '1.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'sense_enqueue_scripts' );

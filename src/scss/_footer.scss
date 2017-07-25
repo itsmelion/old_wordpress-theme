@@ -1,7 +1,36 @@
-footer {
-  background-color: $background;
+#footer {
+  background-color: #100d0c;
   width: 100%;
-  padding: 6px;
-  @include font-size(.85);
-  img{@include icon-small;}
+  footer{
+    @media #{$grid-sm}{
+      .sense-data{
+        width: 100%;
+        text-align: center
+      }
+      .footer-links{width: 50%}
+    }
+    padding: 5*$radius 0;
+    color: $white7;
+    @include font-size(.85);
+    address{
+      @include font-size(.7);
+    }
+    img{@include icon-small;}
+    .footer-links{
+      line-height: 4*$radius;
+      padding-left: 4*$radius;
+      text-transform: uppercase;
+      a{color: inherit}
+    }
+  }
+}
+#dev-footer{
+  position: relative;
+  height: 30pt;
+  iframe{
+   width: 100%;
+   height: 100%;
+   position: relative;
+   background-color: #101012;
+  }
 }

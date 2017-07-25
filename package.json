@@ -14,11 +14,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "flamework": "latest"
+    "flamework": "latest",
+    "tether": ">=1.4.0",
+    "tether-drop": ">=1.4.2"
   },
   "devDependencies": {
-    "@cedx/gulp-php-minify": "latest",
-    "browser-sync": ">=2.18.12",
+    "@cedx/gulp-php-minify": ">=4.1.0",
+    "browser-sync": ">=2.18.13",
     "css-mqpacker": ">=6.0.1",
     "del": ">=3.0.0",
     "gulp": ">=3.9.1",
@@ -38,7 +40,7 @@
     "gulp-sourcemaps": ">=2.6.0",
     "gulp-uglify": ">=3.0.0",
     "main-bower-files": ">=2.13.1",
-    "run-sequence": ">=2.0.0",
+    "run-sequence": ">=2.1.0",
     "wiredep": ">=4.0.0"
   },
   "repository": {

@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-	<section class="page-content primary" role="main">
+	<section class="page-content stomr primary" role="main">
 
 		<?php
 			if ( have_posts() ) : the_post();
