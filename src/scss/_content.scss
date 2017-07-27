@@ -50,3 +50,132 @@
 		@include hide;
 	}
 }
+
+.post-header{
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center;
+	h1{
+		font-size: 320%;
+		color: white;
+		font-style: normal;
+		font-weight: lighter;
+	}
+	@media #{$grid-sm} {
+		background-attachment: scroll;
+	}
+}
+
+#NAV-OVERVIEW{
+	background-color: #f5f5f5;
+	padding: 4pt 36pt;
+	li{
+		list-style: none;
+		border-radius: 4pt;
+		color: $black5;
+		padding: .8em 1em;
+		cursor: pointer;
+		&:hover, &:active,&:focus{
+			background: rgba(black, .1);
+		}
+	}
+}
+
+#BIKE-OVERVIEW{
+	background-color: #ffffff;
+	.paragraph-title{
+		padding: 3em 4em 2em 3em;
+		img{
+			max-width: 180pt;
+		}
+	}
+	.paragraph-description{
+		padding: 3em;
+		padding-top: 0;
+	}
+	.color-picker{
+		position: relative;
+		min-height: 250pt;
+		img{
+			position: absolute;
+			width: auto;
+			height: 100%;
+			right: 0;
+			z-index: 1;
+		}
+		ol{
+			z-index: 2;
+			position: absolute;
+			top: .5em;
+			right: 1em;
+			border-radius: 4pt;
+			background-color: #f5f5f5;
+			>li{
+				cursor: pointer;
+				padding: 6pt;
+				border-right: 1px solid #e0e0e0;
+				&:last-of-type{border-right: none;}
+				&:hover{
+					span{
+						transform: scale3d(1.2,1.2,1.2);
+					}
+				}
+				span{
+					border-radius: 50%;
+					display: block;
+					width: 12pt;
+					height: 12pt;
+					@include transition;
+					transform-origin: center;
+				}
+			}
+		}
+	}
+}
+
+#SPECS{
+	padding: 0;
+	background-color: #1C2429;
+	ul{
+	background-color: #272E32;
+	padding: 4pt 36pt;
+	width: 100%;
+		li{
+			display: inline-block;
+			list-style: none;
+			border-radius: 4pt;
+			color: $black5;
+			padding: .8em 1em;
+			font-weight: bold;
+			color: white;
+			cursor: pointer;
+			&:hover, &:active,&:focus{
+				background: #1C2429;
+			}
+		}
+	}
+	.spec-parent{
+		position: relative;
+		width: 100%;
+		min-height: 350pt;
+		padding: 3em 1em;
+	}
+	#especificacoes{display: none} //off for a while
+	#especificacoes, #geometria{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		color: white;
+		font-size: 80%;
+		h4{
+			font-weight: bold;
+			letter-spacing: .1pt;
+			margin: 4pt 6pt;
+			font-size: 90%;
+		}
+		tbody:nth-of-type(odd){
+			background-color: rgba(black, .15);
+		}
+		td{padding: 6pt 12pt;}
+	}
+}

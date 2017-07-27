@@ -38,6 +38,7 @@ nav{
 }
 
 nav{
+  z-index: 1020;
   .menu-logo{
     img{@include icon-small;}
   }
@@ -64,6 +65,7 @@ nav{
   max-width: 250pt;
   min-width: 190pt;
   padding: $radius;
+  z-index: 50;
   a{
     color: $black8;
     line-height: $radius*4;

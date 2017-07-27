@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@cedx/gulp-php-minify@latest":
+"@cedx/gulp-php-minify@>=4.1.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@cedx/gulp-php-minify/-/gulp-php-minify-4.1.0.tgz#d92cfce060f3deb91dbd0ef2fe2e701d8ff0cf24"
   dependencies:

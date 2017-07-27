@@ -25,6 +25,4 @@ grunt/.sass-cache
 dist/
 ./dist
 
-alive8/
-./alive8
-./alive8/
+yarn.lock

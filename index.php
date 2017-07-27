@@ -1,7 +1,6 @@
 <?php get_header(); ?>
 
 <div class="layout-row-nowrap" style="margin-top: 48pt">
-	<aside class="filters flex-noshrink">Upcoming Filter Features</aside>
 	<section class="page-content primary wrap" role="main" >
 		<?php
 			if ( have_posts() ):
