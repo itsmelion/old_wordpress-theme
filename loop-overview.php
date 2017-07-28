@@ -12,22 +12,26 @@
 	}
 </style>
 <header id="post-<?php the_ID(); ?>" class="post-header layout-row-center-around">
-	<div class="flex-initial"><h1><?php the_title(); ?><?php the_field('bold-title'); ?></h1></div>
+	<div class="flex-initial" style="backface-visibility: hidden;
+  visibility: hidden;"><h1><?php the_title(); ?><?php the_field('bold-title'); ?></h1></div>
 	<span class="flex-initial"></span>
 </header>
 
 
 <aside id="NAV-OVERVIEW">
+	<li>Dropdown pra outras páginas</li>
 	<li><?php the_title(); ?><?php the_field('bold-title'); ?></li>
 	<li>Especificações</li>
+	<li>Geometria</li>
 	<li>Tecnologia</li>
 	<li>Galeria</li>
+	<li>Mais produtos</li>
 </aside>
 
 
-<section id="BIKE-OVERVIEW" class="layout-row">
+<section id="BIKE-OVERVIEW" class="layout-row wrap">
 
-	<div class="layout-column flex">
+	<div class="overview-paragraph flex-noshrink">
 		<div class="paragraph-title">
 			<?php if( get_field('arte_do_titulo') ) : ?>
 			<img src="<?php the_field('arte_do_titulo'); ?>" />
@@ -37,6 +41,9 @@
 			<?php endif; ?>
 		</div>
 		<div class="paragraph-description">
+			<?php if ( !the_field('descricao_ou_imagem' && !the_field('description')) ) : ?>
+			<?php the_content(); ?>
+			<?php endif; ?>
 			<?php if ( the_field('descricao_ou_imagem	') ) : ?>
 			<img src="<?php the_field('imagem_da_descricao'); ?>">
 			<?php else : ?> 
@@ -45,7 +52,11 @@
 		</div>
 	</div>
 
-<div class="color-picker flex">
+
+<!-- ######## ADD ZOOM ####### -->
+
+<article class="flex-noshrink">
+	<div class="color-picker">
 	<?php if( have_rows('bike_color') ): ?>
 	<?php while( have_rows('bike_color') ): the_row(); 
 
@@ -53,26 +64,28 @@
 		$color = get_sub_field('cor');
 
 	?>
-	<img src="<?php echo $img; ?>" />
+		<img src="<?php echo $img; ?>" />
+	
 
 	<?php endwhile; ?>
 
-<ol class="layout-row">
-	<?php while( have_rows('bike_color') ): the_row(); 
-		$color = get_sub_field('cor');
-	?>	
-	<li><span style="background-color: <?php echo $color; ?>"></span></li>
-	<?php endwhile; ?>
-</ol>
-<?php endif; ?>
+	<ol class="layout-row">
+		<?php while( have_rows('bike_color') ): the_row(); 
+			$color = get_sub_field('cor');
+		?>	
+		<li><span style="background-color: <?php echo $color; ?>"></span></li>
+		<?php endwhile; ?>
+	</ol>
+	<?php endif; ?>
 
 </div>
+</article>
 
 </section>
 
 <section id="SPECS" class="layout-column">
 	<ul>
-		<li>Especificações</li>
+		<li>NAO USAR ABA Especificações</li>
 		<li>Geometria</li>
 	</ul>
 

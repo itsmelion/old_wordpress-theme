@@ -1,17 +1,21 @@
-<div class="sub-menu layout-column">
-  <div class="layout-row-nowrap">
-    <li class="flex-initial">
+<!-- <div class="layout-row-nowrap">
+    
+      ICONE MENU
+      <li class="flex-initial">
       <img src="<?php echo get_bloginfo('template_url') ?>/dist/images/bike.png" alt="bikes icon"/>
       <span>Bikes</span>
-    </li>
-    <ol class="flex-grow">
-      <li><a href="tag/urban">Urban</a></li>
-      <li><a href="tag/mtb">Mountain</a></li>
-      <li><a href="tag/road">Estrada</a></li>
-      <li><a href="tag/#">Bike Elétrica</a></li>
-    </ol>
-  </div>
+    </li> 
+    
+  </div>-->
+<div class="sub-menu layout-column">
+  <ol class="flex-grow">
+    <li><a href="<?php echo home_url();?>/tag/urban">Urbana</a></li>
+    <li><a href="<?php echo home_url();?>/tag/mtb">Mountain Bike</a></li>
+    <li><a href="<?php echo home_url();?>/tag/road">Estrada</a></li>
+    <li><a title="Bike Elétrica" href="<?php echo home_url();?>/tag/eletrica">e-Bike</a></li>
+    <li><a href="<?php echo home_url();?>/bikes">Ver todas</a></li>
+  </ol>
   <ol>
-    <li><a href="categories/acessorios">Acessórios</a></li>
+    <li><a href="<?php echo home_url();?>/categories/acessorios">Acessórios</a></li>
   </ol>
 </div>

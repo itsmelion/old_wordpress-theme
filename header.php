@@ -97,8 +97,9 @@ a:hover{
 <body <?php body_class(); ?> >
 
 <div id="nav">
-  <nav class="container layout-row-nowrap-between">
-  <li class="flex-none">
+  <nav class="layout-row-nowrap-between">
+
+  <li class="flex">
     <a title="<?php bloginfo( 'description' ); ?>" href="<?php echo home_url();?>" class="menu-logo hide-sm show-lg">
     <img src="<?php echo get_bloginfo('template_url') ?>/dist/images/logotipo.svg" alt="<?php bloginfo( 'name' ); ?>"/>
     </a>
@@ -106,16 +107,13 @@ a:hover{
     <img src="<?php echo get_bloginfo('template_url') ?>/dist/images/logo.svg" alt="<?php bloginfo( 'name' ); ?>"/>
     </a>
   </li>
-  <li class="flex">
-    <div class="showcase hero">
-      <div class="showcase-inner">
-        <a class="drop-target"></a>
-      </div>
-    </div>
-  </li>
+
+
   <ul class="layout-row-end flex-noshrink">
-    <li id="menu-sense" class="menu-item menu-item-has-children"><a href="sense">A Sense</a></li>
-    <li id="menu-bike" class="menu-item menu-item-has-children"><a href="bikes">Bikes</a></li>
+    <li id="menu-sense" class="menu-item menu-item-has-children">
+      <a href="<?php echo home_url();?>">A Sense</a></li>
+    <li id="menu-bike" class="menu-item menu-item-has-children">
+      <a href="<?php echo home_url();?>/bikes">Bikes</a></li>
   </ul>
     
     <!-- <?php

@@ -183,10 +183,8 @@ function clean_custom_menu( $theme_location ) {
 function sense_enqueue_scripts() {
 	wp_enqueue_style( 'sense-styles', get_stylesheet_uri(), array(), '1.0' );
 	wp_enqueue_script( 'jquery' );
-	wp_register_script('jquery-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js', false, '1.12.1', true);
-    wp_enqueue_script('jquery-ui');
-    wp_register_script('jquery-slick', '//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js', false, '1.6.0', true);
-    wp_enqueue_script('jquery-slick');
+	wp_enqueue_script( 'jquery-ui', get_template_directory_uri() . '/dist/js/jqueryui/jquery-ui.js', array(), '1.12.1', true );
+	wp_enqueue_script( 'jquery-slick', get_template_directory_uri() . '/dist/js/slick/slick.min.js', array(), '1.6.0', true );
     wp_enqueue_script( 'lightbox', get_template_directory_uri() . '/dist/js/jquery-photoswipe/jquery.photoswipe-global.js', array(), '1.0', true );
 	wp_enqueue_script( 'tether', get_template_directory_uri() . '/node_modules/tether/dist/js/tether.min.js', array(), '1.4.0', true );
 	wp_enqueue_script( 'tether-drop', get_template_directory_uri() . '/node_modules/tether-drop/dist/js/drop.min.js', array(), '1.4.2', true );

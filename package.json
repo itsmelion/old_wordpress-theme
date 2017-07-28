@@ -14,7 +14,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "flamework": "latest",
+    "flamework": "^1.0.2",
     "tether": ">=1.4.0",
     "tether-drop": ">=1.4.2"
   },

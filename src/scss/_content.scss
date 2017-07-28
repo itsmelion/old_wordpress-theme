@@ -3,7 +3,8 @@
 }
 
 .page-content{
-	background-color: #e0e0e0;
+	padding-top: 64pt;
+	background-color: white;
 }
 
 .filters{
@@ -13,41 +14,52 @@
 }
 
 .post{
-	width: 20%;
 	min-width: 180pt;
 	margin-left: 1%;
-	margin-top: 1%;	
+	margin-top: 1%;
+	flex: 0 1 20%;
 	background-color: #ffffff;
-	padding-bottom: 36pt;	
+	padding-bottom: 2*$radius;	
 	position: relative;
 	@include transition;
+	.post-meta{
+		@include hide;
+	}
 	&:hover, &:focus{
 		@include shadow;
+	}
+	button{
+		border: none;
+		background-color: white;
+		margin: 0;
+		padding: 0;
+		height: 100%;
+		width: 100%;
+		outline: none;
+		position: relative;
+		img{
+			min-width: 100%;
+			height: 100%;
+		}
+	}
+	.post-title{
+		width: 100%;
+		margin-top: $radius;
+		text-align: center;
+		@include font-size(1);
+		text-transform: uppercase;
+		font-weight: lighter;
+		letter-spacing: normal;
+		color: $black8;
+		font-style: normal;
+		line-height: 1;
+		span{
+			font-weight: bold;
+		}
 	}
 	@media #{$grid-sm} {
 		width: 100%;
 		margin: .5em
-	}
-	.post-title{
-		position: absolute;
-		bottom: 6pt;
-		width: 100%;
-		text-align: center;
-		a{
-			@include font-size(1);
-			text-transform: uppercase;
-			font-weight: lighter;
-			letter-spacing: normal;
-			color: $black8;
-			font-style: normal;
-			line-height: 1;
-			span{
-				font-weight: bold;
-			}
-		}
-	}
-	.post-meta{
-		@include hide;
 	}
 }
 
@@ -83,6 +95,9 @@
 
 #BIKE-OVERVIEW{
 	background-color: #ffffff;
+	.overview-paragraph{
+		max-width: 450px;
+	}	
 	.paragraph-title{
 		padding: 3em 4em 2em 3em;
 		img{
@@ -91,17 +106,17 @@
 	}
 	.paragraph-description{
 		padding: 3em;
+		min-width: 250pt;
 		padding-top: 0;
 	}
 	.color-picker{
 		position: relative;
 		min-height: 250pt;
+		min-width: 250pt;
 		img{
 			position: absolute;
-			width: auto;
-			height: 100%;
-			right: 0;
-			z-index: 1;
+			width: 100%;
+			right: 0;	
 		}
 		ol{
 			z-index: 2;

@@ -39,9 +39,6 @@ nav{
 
 nav{
   z-index: 1020;
-  .menu-logo{
-    img{@include icon-small;}
-  }
   .menu-item-has-children{
     position: relative;
     a{padding-right: 6*$radius;}
@@ -50,9 +47,9 @@ nav{
       position: absolute;
       right: $radius;
       top: 50%;
-      margin-top: -1.75*$radius;
-      width: 3.5*$radius;
-      height: 3.5*$radius;
+      margin-top: -1.5*$radius;
+      width: 3*$radius;
+      height: 3*$radius;
       pointer-events: none;
     }
   }
@@ -60,24 +57,23 @@ nav{
 
 .sub-menu{
   border: 1.2pt solid #cccccc;
+  border-top-color: transparent;
   background: white;
   border-radius: 0 0 $radius $radius; 
   max-width: 250pt;
   min-width: 190pt;
-  padding: $radius;
-  z-index: 50;
+  z-index: 1021;
   a{
     color: $black8;
     line-height: $radius*4;
     &:hover{
-      opacity: .7;
+      opacity: .8;
     }
   }
   >div {
     > li{
       width: 8*$radius;
-      padding: $radius $radius $radius 0;
-      margin-right: $radius;
+      padding: $radius;
       list-style: none;
       text-align: center;
       span{
@@ -92,16 +88,16 @@ nav{
     }
   }
   > ol {
-    margin-top: $radius*2;
+    &:nth-of-type(2){margin-top: $radius;}
     li{
       border-bottom: 1pt solid rgba(black, .08);
       a{
         display: block;
         padding: $radius;
+        padding-left: 2*$radius;
         &:hover{background-color: rgba(black, .05)}
       }
-      &:first-of-type{border-top: 1pt solid rgba(black, .08)}
-      }
+    }
   }
   
 }

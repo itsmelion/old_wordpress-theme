@@ -3,20 +3,17 @@
   width: 100%;
   footer{
     @media #{$grid-sm}{
-      .sense-data{
-        width: 100%;
-        text-align: center
-      }
-      .footer-links{width: 50%}
+      .footer-links{width: 33%}
     }
     padding: 5*$radius 0;
     color: $white7;
     @include font-size(.85);
-    address{
-      @include font-size(.7);
-    }
     img{@include icon-small;}
     .footer-links{
+      .td{
+        font-weight: bold;
+        color: white;
+      }
       line-height: 4*$radius;
       padding-left: 4*$radius;
       text-transform: uppercase;

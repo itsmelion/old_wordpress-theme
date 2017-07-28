@@ -1,7 +1,6 @@
 <?php get_header(); ?>
 
-<div class="layout-row-nowrap" style="margin-top: 48pt">
-	<section class="page-content primary wrap" role="main" >
+	<section class="page-content layout-row-center wrap" role="main" >
 		<?php
 			if ( have_posts() ):
 
@@ -19,6 +18,5 @@
 		?>
 	
 	</section>
-</div>
 
 <?php get_footer(); ?>

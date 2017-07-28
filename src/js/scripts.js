@@ -233,34 +233,21 @@
 		ride: 'carousel'
 	}); */
 
-	$('.card-container').slick({
-  	infinite: true,
-  	slidesToShow: 4,
-		slidesToScroll: 4,
-		variableWidth: true,
+	$('#header-carroussel').slick({
+		dots: true,
+		infinite: true,
+		speed: 500,
+		fade: true,
+		cssEase: 'linear',
+		variableWidth: false,
 		adaptiveHeight: false,
 		lazyLoad: 'ondemand',
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 2000,
 		centerMode: true,
-		mobileFirst: true,
-		prevArrow: '<button type="button" class="slick-prev"><img src="http://live8.com.br/wp-content/themes/alive8/images/icons/arrow.svg" alt="Slide"/></button>',
-		nextArrow: '<button type="button" class="slick-next"><img src="http://live8.com.br/wp-content/themes/alive8/images/icons/arrow.svg" alt="Slide"/></button>',
-		responsive: [
-    {
-      breakpoint: 1366,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: true,
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-  ]
+		mobileFirst: true
 	});
 
 	$('.card-container').photoSwipe();

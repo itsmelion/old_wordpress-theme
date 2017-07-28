@@ -1,50 +1,24 @@
 <div id="footer">
- <footer class="container layout-row-nowrap">
-	 	<div class="sense-data">
-		<img src="<?php echo get_bloginfo('template_url') ?>/dist/images/logo.svg" alt="<?php bloginfo( 'name' );?>" />
-		<address>
-		<p>Belo Horizonte/MG<br>(##) # ####-####</p>
-		<ul class="hide-lg layout-row-center">
-			<li>
-				<a href="about" title="Encontre sua Bike">
-				<img src="<?php echo get_bloginfo('template_url') ?>/dist/images/icon-map.svg" alt="Mapa"/>
-				</a>
-			</li>
-			<li>
-				<a href="about" title="Facebook">
-				<img src="<?php echo get_bloginfo('template_url') ?>/dist/images/icon-facebook.svg" alt="Facebook"/>
-				</a>
-			</li>
-			<li>
-				<a href="about" title="Instagram">
-				<img src="<?php echo get_bloginfo('template_url') ?>/dist/images/icon-instagram.svg" alt="Instagram"/>
-				</a>
-			</li>
-			<li>
-				<a href="about" title="YouTube">
-				<img src="<?php echo get_bloginfo('template_url') ?>/dist/images/icon-play.svg" alt="YouTube"/>
-				</a>
-			</li>
-		</ul>
-		<ul>
-			<li><a href="mailto:contato@intuite.ch?cc=contato@intuite.ch&subject=Email%20Test&body=Email%20teste%20corpo">Escrever email</a></li>
-			<li class="hide-lg"><a href="tel:+########">
-			Adicionar aos contatos
-		</a></li>
-		</ul>
-	</address>
-	</div>
+ <footer class="container layout-row-between-nowrap">
 	<ul class="footer-links">
-		<li><a href="about">Sobre a Sense</a></li>
-		<li><a href="about">Atletas</a></li>
-		<li><a href="about">Dúvidas</a></li>
-		<li><a href="about">Garantia</a></li>
+		<li class="td">SAC</li>
+		<li><a href="<?php echo home_url();?>/about">Notícias</a></li>
+		<li><a href="<?php echo home_url();?>/garantia">Garantia</a></li>
+		<li><a href="<?php echo home_url();?>/demotour">Fale conosco</a></li>	
+		<li>
+			<a class="btn" href="<?php echo home_url();?>/register">Registre sua bike</a>
+		</li>
 	</ul>
-	<span class="flex"></span>
+	<ul class="footer-links">
+		<li class="td">SENSE</li>
+		<li><a href="<?php echo home_url();?>/sense">Quem somos</a></li>
+		<li><a href="<?php echo home_url();?>/bikes">bikes</a></li>
+		<li><a href="<?php echo home_url();?>/atletas">atletas</a></li>
+		<li><a href="<?php echo home_url();?>/demotour">DemoTOUR</a></li>
+	</ul>
 	<ul class="footer-links text-right">
-		<li><a href="about">Vídeos</a></li>
-		<li><a href="about">Papéis de Parede</a></li>
-		<li class="social hide-sm">
+		<li class="td">Siga-nos</li>
+		<li class="social">
 			<a href="about" title="Encontre sua Bike">
 				<img src="<?php echo get_bloginfo('template_url') ?>/dist/images/icon-map.svg" alt="Mapa"/>
 			</a>

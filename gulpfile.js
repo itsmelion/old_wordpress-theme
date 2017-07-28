@@ -6,7 +6,7 @@ const autoprefixer = require('autoprefixer');
 const postcss = require('gulp-postcss');
 const mqpacker = require('css-mqpacker');
 const runSequence = require('run-sequence');
-const phpMinify = require('@cedx/gulp-php-minify');
+const {phpMinify} = require('@cedx/gulp-php-minify');
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
@@ -44,13 +44,12 @@ gulp.task('scripts', () => {
 });
 
 gulp.task('php', () => gulp.src('**/*.php', {read: false})
-.pipe(gulpIgnore.exclude(dev))
-.pipe(phpMinify())
+.pipe($.phpMinify())
 .pipe(gulp.dest('dist'))
 );
 
 gulp.task('html', ['styles', 'scripts'], () => {
-  return gulp.src('**/*.html')
+  return gulp.src('partials/*.html')
     .pipe($.if(!dev, $.htmlmin({
       collapseWhitespace: true,
       minifyCSS: true,
@@ -65,7 +64,7 @@ gulp.task('html', ['styles', 'scripts'], () => {
       removeScriptTypeAttributes: false,
       removeStyleLinkTypeAttributes: false
     })))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dist/partials'));
 });
 
 gulp.task('images', () => {
@@ -119,8 +118,7 @@ gulp.task('serve:dist', ['default'], () => {
   });
 });
 
-
-gulp.task('build', ['lint', 'scripts', 'styles', 'php', 'html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['styles', 'scripts', 'html', 'images', 'fonts', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({
     title: 'build',
     gzip: true

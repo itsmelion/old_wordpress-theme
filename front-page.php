@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<?php if ( '' != get_custom_header()->url ) : ?>
+<!-- <?php if ( '' != get_custom_header()->url ) : ?>
 <style>
 	.get_custom_header{
 		background-size: cover;
@@ -10,19 +10,27 @@
 		background-attachment: fixed;
 	}
 </style>
-<?php endif; ?>
 
 <header class="layout-row-around-center get_custom_header">
-
+	
 	<div class="flex text-center">
 		<img src="<?php echo get_bloginfo('template_url') ?>/dist/images/linha2018.svg" alt="Linha 2018"/>
 	</div>
 	<div class="flex"></div>
 
 </header>
+<?php endif; ?> -->
 
+<?php $frontHero = get_field('galeria-home_wide', 'option'); ?>
 
-<div class="container">
+<header id="header-carroussel">
+  <?php foreach( $frontHero as $image ): ?>
+    <div class="home-swipe" style="background-image: url('<?php echo $image['sizes']['large']; ?>')">
+    </div>
+		<?php endforeach; ?>
+</header>
+
+<!-- <div class="container">
 	<section class="layout-row-nowrap video-section">
 	<div class="rec flex-nogrow">
 		<div class="layout-row-nowrap-start smcenter">
@@ -45,7 +53,7 @@
 
 	</div>
 	</section>
-</div>
+</div> -->
 
 <!-- <section class="page-content primary" role="main">
 	<?php
