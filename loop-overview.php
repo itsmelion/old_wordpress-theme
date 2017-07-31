@@ -192,6 +192,10 @@
 	</div>
 </section>
 
+<section id="TECNOLOGIA">
+	<h1>tecnologia</h1>
+</section>
+
 <section id="GALERIA">
 	<?php $images = get_field('galeria');
 
