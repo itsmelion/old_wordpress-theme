@@ -5,7 +5,8 @@
   z-index: 1000;
   box-sizing: border-box;
   color: white;
-  padding: 0 $radius;
+  padding: 3pt $radius;
+  padding-right: 24pt;
   li{
     list-style: none;
     margin-right: $radius;
@@ -31,7 +32,8 @@
     text-transform: uppercase;
     letter-spacing: 0.5pt;
     min-height: 6*$radius;
-    line-height: 6*$radius;
+    line-height: 6*$radius; 
+    border-radius: $radius/2;
     @include transition;
 		&:hover{
 			background-color: rgba(black, .3);
@@ -60,6 +62,7 @@
   background: white;
   max-width: 250pt;
   min-width: 190pt;
+  border-radius: $radius/2;
   > ol {
     &:nth-of-type(2){margin-top: $radius;}
     li{

@@ -77,12 +77,10 @@ a:hover{
 
 ::selection {
 	background: <?php the_field('main-color', 'option'); ?>;
-	color: white;
 }
 
 ::-moz-selection {
 	background: <?php the_field('main-color', 'option'); ?>;
-	color: white;
 }
 
 #nav{
@@ -96,9 +94,9 @@ a:hover{
 </head>
 <body <?php body_class(); ?> >
 
-<nav class="layout-row-nowrap-between main-menu" id="nav">
+<nav class="layout-row-forcenowrap-between main-menu" id="nav">
 
-  <li class="menu-logo">
+  <li class="flex menu-logo">
     <a title="<?php bloginfo( 'description' ); ?>" href="<?php echo home_url();?>" class="hide-sm show-lg">
     <img src="<?php echo get_bloginfo('template_url') ?>/dist/images/logotipo.svg" alt="<?php bloginfo( 'name' ); ?>"/>
     </a>
@@ -107,7 +105,7 @@ a:hover{
     </a>
   </li>
 
-  <ul class="flex-end layout-row">
+  <ul class="flex-end-noshrink layout-row">
     <li id="menu-sense" class="menu-item menu-item-has-children">
       <a>A Sense</a></li>
     <li id="menu-bike" class="menu-item menu-item-has-children">

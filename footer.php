@@ -36,13 +36,6 @@
  </footer>
 </div>
 
-<ul class="footer-widgets">
-	<?php
-	if ( function_exists( 'dynamic_sidebar' ) ) :
-		dynamic_sidebar( 'footer-sidebar' );
-	endif; ?>
-</ul>
-
 <?php wp_footer(); ?>
 
 <!-- <div id="dev-footer">

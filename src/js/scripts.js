@@ -181,12 +181,6 @@ colorButtons.on("click", function () {
 });
 
 
-
-
-
-
-
-
 	// Variables
 	var clickedTab = $(".tabs > .active");
 	var tabWrapper = $(".tab__content");
@@ -254,7 +248,7 @@ colorButtons.on("click", function () {
 	$('#header-carroussel').slick({
 		dots: true,
 		infinite: true,
-		speed: 500,
+		speed: 2000,
 		fade: true,
 		cssEase: 'linear',
 		variableWidth: false,
@@ -267,20 +261,59 @@ colorButtons.on("click", function () {
 		centerMode: true,
 		mobileFirst: true
 	});
-
-	$('.card-container').photoSwipe();
-
-  $(function () {
-		$('footer').css({ bottom: '-105vh' });
-		$(".arrow.up").on("click", function () {
-			$("footer").animate({bottom: '0'});
-		}
-		);
-		$(".arrow.down").on("click", function () {
-			$("footer").animate({bottom: '-105vh'});
-		}
-		);
-		
+	$('#GALERIA').slick({	
+		infinite: true,
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		adaptiveHeight: false,
+		variableWidth: true,
+		arrows: false,
+		dots: true,
+		responsive: [
+			{
+				breakpoint: 840,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1
+				}
+			}
+		]
 	});
 
-})(jQuery);
+	$('#GALERIA').photoSwipe();
+
+
+	/* var vid = $("#bgvid");
+	var pauseButton = $("#polina button");
+	
+	if (window.matchMedia('(prefers-reduced-motion)').matches) {
+			vid.removeAttribute("autoplay");
+			vid.pause();
+			pauseButton.innerHTML = "Paused";
+	}
+	
+	function vidFade() {
+		vid.addClass("stopfade");
+	}
+	
+	vid.addEventListener('ended', function()
+	{
+	// only functional if "loop" is removed 
+	vid.pause();
+	// to capture IE10
+	vidFade();
+	}); 
+	
+	
+	pauseButton.addEventListener("click", function() {
+		vid.classList.toggle("stopfade");
+		if (vid.paused) {
+			vid.play();
+			pauseButton.innerHTML = "Pause";
+		} else {
+			vid.pause();
+			pauseButton.innerHTML = "Paused";
+		}
+	}) */
+
+})(jQuery);	

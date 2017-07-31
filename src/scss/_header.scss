@@ -1,10 +1,12 @@
 header{
+	background-size: cover;
+	background-position: center;
 	@media screen and (max-width: 48em){
 		background-attachment: scroll;
 	}
 }
 
-.video-section{
+/* .video-section{
 	padding: 6em 0;
 }
 .rec{
@@ -46,4 +48,4 @@ header{
 		color: white;
 		@include font-size(1.2);
 	}
-}
+} */

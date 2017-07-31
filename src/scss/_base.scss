@@ -34,7 +34,7 @@ html, body {
 	position: relative;
 	min-height: 100%;
 	color: inherit;
-	/* overflow: hidden; */
+	outline-color: yellow;
 }
 
 ::selection {
@@ -69,10 +69,6 @@ a[href] {
 img {
 	max-width: 100%;
 	height: auto;
-}
-
-section{
-	padding: $radius;
 }
 
 @mixin icon-small{
