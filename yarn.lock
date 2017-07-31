@@ -1772,7 +1772,7 @@ flagged-respawn@^0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/flagged-respawn/-/flagged-respawn-0.3.2.tgz#ff191eddcd7088a675b2610fffc976be9b8074b5"
 
-flamework@^1.0.2:
+flamework@>=1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/flamework/-/flamework-1.0.3.tgz#d5b89c3d4f4b489f1e9a71d9a0985d15e01652d6"
   dependencies:
@@ -2155,6 +2155,10 @@ graceful-fs@~1.2.0:
 "graceful-readlink@>= 1.0.0":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
+
+gsap@^1.20.2:
+  version "1.20.2"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-1.20.2.tgz#c78abd906c32ee21964c1b90f921b5110180c65a"
 
 gulp-autoprefixer@>=4.0.0:
   version "4.0.0"
@@ -2979,6 +2983,18 @@ jpegtran-bin@^3.0.0:
     bin-build "^2.0.0"
     bin-wrapper "^3.0.0"
     logalot "^2.0.0"
+
+jquery-lazyload@^1.9.7:
+  version "1.9.7"
+  resolved "https://registry.yarnpkg.com/jquery-lazyload/-/jquery-lazyload-1.9.7.tgz#9982b388c533c0b611214b3c5aaa0b9fede071f7"
+
+jquery-ui@^1.12.1:
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/jquery-ui/-/jquery-ui-1.12.1.tgz#bcb4045c8dd0539c134bc1488cdd3e768a7a9e51"
+
+jquery@>=1.7.2:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
 
 js-base64@^2.1.8, js-base64@^2.1.9:
   version "2.1.9"
@@ -3996,6 +4012,10 @@ performance-now@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-0.2.0.tgz#33ef30c5c77d4ea21c5a53869d91b56d8f2555e5"
 
+photoswipe@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/photoswipe/-/photoswipe-4.1.2.tgz#95c20a75cea23b70d6299641cad82e03cae7f797"
+
 pify@^2.0.0, pify@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
@@ -4775,6 +4795,12 @@ slice-ansi@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/slice-ansi/-/slice-ansi-0.0.4.tgz#edbf8903f66f7ce2f8eafd6ceed65e264c831b35"
 
+slick-carousel@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/slick-carousel/-/slick-carousel-1.6.0.tgz#780f378e470f4e6f6bec1aa2bae0475f4f9eb085"
+  dependencies:
+    jquery ">=1.7.2"
+
 sntp@1.x.x:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/sntp/-/sntp-1.0.9.tgz#6541184cc90aeea6c6e7b35e2659082443c66198"
@@ -5185,13 +5211,13 @@ ternary-stream@^2.0.1:
     merge-stream "^1.0.0"
     through2 "^2.0.1"
 
-tether-drop@>=1.4.2:
+tether-drop@^1.4.2:
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/tether-drop/-/tether-drop-1.4.2.tgz#28e240cce077f4ae1d8e5990a03b71e0cd6fbfec"
   dependencies:
     tether "^1.1.0"
 
-tether@>=1.4.0, tether@^1.1.0:
+tether@^1.1.0, tether@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/tether/-/tether-1.4.0.tgz#0f9fa171f75bf58485d8149e94799d7ae74d1c1a"
 

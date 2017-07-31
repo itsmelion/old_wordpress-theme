@@ -2,25 +2,24 @@
 	flex-flow: wrap !important;
 }
 
-.page-content{
-	padding-top: 64pt;
-	background-color: white;
-}
-
-.filters{
-	background-color: white;
-	border: 1pt solid  #f2f2f2;
-	width: 180pt;
+#bike-list{
+	background: white;
+	padding-top: 36pt;
+	min-height: 100%;
+	min-height: 100vh;
 }
 
 .post{
-	min-width: 180pt;
+	min-width: 200pt;
 	margin-left: 1%;
 	margin-top: 1%;
-	flex: 0 1 20%;
+	flex: 0 1 24%;
 	background-color: #ffffff;
 	padding-bottom: 2*$radius;	
 	position: relative;
+	&:first-of-type{
+		margin-left: 0;
+	}
 	@include transition;
 	.post-meta{
 		@include hide;
@@ -67,11 +66,10 @@
 	background-size: cover;
 	background-attachment: fixed;
 	background-position: center;
+	height: 50%;
+	height: 50vh;
 	h1{
-		font-size: 320%;
-		color: white;
-		font-style: normal;
-		font-weight: lighter;
+		visibility: hidden;
 	}
 	@media #{$grid-sm} {
 		background-attachment: scroll;
@@ -96,8 +94,10 @@
 #BIKE-OVERVIEW{
 	background-color: #ffffff;
 	.overview-paragraph{
-		max-width: 450px;
-	}	
+		width: 100%;
+		min-width: 250pt;
+		max-width: 580px;
+	}
 	.paragraph-title{
 		padding: 3em 4em 2em 3em;
 		img{
@@ -109,14 +109,19 @@
 		min-width: 250pt;
 		padding-top: 0;
 	}
+	article{
+		position: relative;
+		width: 100%;
+		min-width: 250pt;
+		max-width: 620px;
+	}
 	.color-picker{
 		position: relative;
-		min-height: 250pt;
-		min-width: 250pt;
+		width: 100%;
 		img{
-			position: absolute;
+			position: relative;
 			width: 100%;
-			right: 0;	
+			right: 0;
 		}
 		ol{
 			z-index: 2;
@@ -129,7 +134,11 @@
 				cursor: pointer;
 				padding: 6pt;
 				border-right: 1px solid #e0e0e0;
-				&:last-of-type{border-right: none;}
+				&.active{
+					background-color: #e5e5e5;
+				}
+				&:last-of-type{border-right: none;border-radius: 0 4pt 4pt 0;}
+				&:first-of-type{border-right: none;border-radius: 4pt 0 0 4pt;}
 				&:hover{
 					span{
 						transform: scale3d(1.2,1.2,1.2);

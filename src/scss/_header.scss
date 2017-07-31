@@ -1,16 +1,6 @@
 header{
-	background-color: #e0e0e0;
-	width: 100%;
-	padding: 2em;
-	padding-top: 2em + 4em;
-	box-sizing: border-box;
-	height: 65vh;
 	@media screen and (max-width: 48em){
 		background-attachment: scroll;
-	}
-	img{
-		max-width: 240pt;
-		min-width: 200pt;
 	}
 }
 

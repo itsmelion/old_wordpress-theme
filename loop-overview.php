@@ -11,12 +11,9 @@
 		}
 	}
 </style>
-<header id="post-<?php the_ID(); ?>" class="post-header layout-row-center-around">
-	<div class="flex-initial" style="backface-visibility: hidden;
-  visibility: hidden;"><h1><?php the_title(); ?><?php the_field('bold-title'); ?></h1></div>
-	<span class="flex-initial"></span>
+<header id="post-<?php the_ID(); ?>" class="post-header">
+	<div class="flex-initial"><h1><?php the_title(); ?><?php the_field('bold-title'); ?></h1></div>
 </header>
-
 
 <aside id="NAV-OVERVIEW">
 	<li>Dropdown pra outras páginas</li>
@@ -28,10 +25,9 @@
 	<li>Mais produtos</li>
 </aside>
 
+<section id="BIKE-OVERVIEW" class="layout-row-between wrap">
 
-<section id="BIKE-OVERVIEW" class="layout-row wrap">
-
-	<div class="overview-paragraph flex-noshrink">
+	<div class="overview-paragraph">
 		<div class="paragraph-title">
 			<?php if( get_field('arte_do_titulo') ) : ?>
 			<img src="<?php the_field('arte_do_titulo'); ?>" />
@@ -54,8 +50,7 @@
 
 
 <!-- ######## ADD ZOOM ####### -->
-
-<article class="flex-noshrink">
+<article>
 	<div class="color-picker">
 	<?php if( have_rows('bike_color') ): ?>
 	<?php while( have_rows('bike_color') ): the_row(); 
@@ -64,7 +59,7 @@
 		$color = get_sub_field('cor');
 
 	?>
-		<img src="<?php echo $img; ?>" />
+		<img src="<?php echo $img; ?>" class="bike-color" />
 	
 
 	<?php endwhile; ?>

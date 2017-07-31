@@ -1,44 +1,45 @@
 #nav{
   width: 100%;
-  min-height: $radius*7;
   position: fixed;
 	top: 0;
-  z-index: 90;
+  z-index: 1000;
   box-sizing: border-box;
   color: white;
-  padding: $radius $radius 0 $radius;
-}
-
-nav{
+  padding: 0 $radius;
   li{
     list-style: none;
-    margin-right: $radius/2;
+    margin-right: $radius;
     a{
       position: relative;
+      padding: $radius;
       height: 100%;
-      display: block;
+      width: 100%;
+      display: flex;
       color: white;
+      cursor: pointer;
+      user-select: none;
     }
-    &.current-menu-item a{
-      background-color: rgba(black, .3);
+    &.menu-logo{
+      height: 36pt;
+      padding: $radius;
+      a{padding: 0}
+      img{height: 100%}
     }
   }
   .menu-item a{
-		border-radius: $radius $radius 0 0;
     padding: 0 3*$radius 0 $radius;
     text-transform: uppercase;
     letter-spacing: 0.5pt;
     min-height: 6*$radius;
     line-height: 6*$radius;
-    transition: .1s;
+    @include transition;
 		&:hover{
 			background-color: rgba(black, .3);
-		}
+    }
+    &.current-menu-item a{
+      background-color: rgba(black, .3);
+    }
 	}
-}
-
-nav{
-  z-index: 1020;
   .menu-item-has-children{
     position: relative;
     a{padding-right: 6*$radius;}
@@ -56,48 +57,21 @@ nav{
 }
 
 .sub-menu{
-  border: 1.2pt solid #cccccc;
-  border-top-color: transparent;
   background: white;
-  border-radius: 0 0 $radius $radius; 
   max-width: 250pt;
   min-width: 190pt;
-  z-index: 1021;
-  a{
-    color: $black8;
-    line-height: $radius*4;
-    &:hover{
-      opacity: .8;
-    }
-  }
-  >div {
-    > li{
-      width: 8*$radius;
-      padding: $radius;
-      list-style: none;
-      text-align: center;
-      span{
-        @include font-size(.8);
-        user-select: none;
-        cursor: default;
-      }
-      img{
-        width: 100%;
-        height: auto;
-      }
-    }
-  }
   > ol {
     &:nth-of-type(2){margin-top: $radius;}
     li{
-      border-bottom: 1pt solid rgba(black, .08);
+      border-bottom: 1pt solid rgba(black, .05);
       a{
         display: block;
+        color: $black8;
+        line-height: $radius*4;
         padding: $radius;
         padding-left: 2*$radius;
         &:hover{background-color: rgba(black, .05)}
       }
     }
   }
-  
 }

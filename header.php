@@ -96,24 +96,22 @@ a:hover{
 </head>
 <body <?php body_class(); ?> >
 
-<div id="nav">
-  <nav class="layout-row-nowrap-between">
+<nav class="layout-row-nowrap-between main-menu" id="nav">
 
-  <li class="flex">
-    <a title="<?php bloginfo( 'description' ); ?>" href="<?php echo home_url();?>" class="menu-logo hide-sm show-lg">
+  <li class="menu-logo">
+    <a title="<?php bloginfo( 'description' ); ?>" href="<?php echo home_url();?>" class="hide-sm show-lg">
     <img src="<?php echo get_bloginfo('template_url') ?>/dist/images/logotipo.svg" alt="<?php bloginfo( 'name' ); ?>"/>
     </a>
-    <a title="<?php bloginfo( 'description' ); ?>" href="<?php echo home_url();?>" class="menu-logo hide-lg show-sm">
+    <a title="<?php bloginfo( 'description' ); ?>" href="<?php echo home_url();?>" class="hide-lg show-sm">
     <img src="<?php echo get_bloginfo('template_url') ?>/dist/images/logo.svg" alt="<?php bloginfo( 'name' ); ?>"/>
     </a>
   </li>
 
-
-  <ul class="layout-row-end flex-noshrink">
+  <ul class="flex-end layout-row">
     <li id="menu-sense" class="menu-item menu-item-has-children">
-      <a href="<?php echo home_url();?>">A Sense</a></li>
+      <a>A Sense</a></li>
     <li id="menu-bike" class="menu-item menu-item-has-children">
-      <a href="<?php echo home_url();?>/bikes">Bikes</a></li>
+      <a>Bikes</a></li>
   </ul>
     
     <!-- <?php
@@ -126,23 +124,15 @@ a:hover{
         'fallback_cb' => '__return_false',
       )
     ); ?> -->
-  </nav>
-</div>
+</nav>
 
 <script>
     const bikeMenu = function() {
-		  const html = '<?php 
-	include( locate_template( '/partials/dropdown-bike.html', false, false ) );
-?>';
+		  const html = '<?php	include( locate_template( '/partials/dropdown-bike.html', false, false ) );?>';
 			return html;
 		};
 		const senseMenu = function() {
-			const html = '<?php 
-	include( locate_template( '/partials/dropdown-sense.html', false, false ) );
-?>';
+			const html = '<?php include( locate_template( '/partials/dropdown-sense.html', false, false ) );?>';
 			return html;
-			/* $.get('dropdown-bike.html').done(function(html){
-				return html;
-			 }); */
 		};
   </script>

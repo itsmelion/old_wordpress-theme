@@ -1,4 +1,9 @@
 (function ($) {
+	/* $(window).on('load', function() { // makes sure the whole site is loaded 
+		$('#loader').fadeOut(); // will first fade out the loading animation 
+		$('#preloader').delay(150).fadeOut('slow'); // will fade out the white DIV that covers the website. 
+		$('body').delay(150).css({'overflow':'auto'});
+	}) */
 	/* var menuBike = new Tether({
 		element: '#submenu-bike',
 		target: '#menu-bike',
@@ -82,7 +87,6 @@
 				constrainToScrollParent: false,
 				openOn: 'hover focus',
 				tetherOptions: {
-					targetOffset: '0 -12pt',
 					constraints: [
 						{
 							to: 'scrollParent',
@@ -107,7 +111,6 @@
 				constrainToScrollParent: false,
 				openOn: 'hover focus',
 				tetherOptions: {
-					targetOffset: '0 -12pt',
 					constraints: [
 						{
 							to: 'scrollParent',
@@ -150,17 +153,32 @@
 		};
 	
 		init();
-	
 
 
 
 
+/* ## COLOR PICKER */
 
+var bikeImages = $(".bike-color");
+var colorButtons = $(".color-picker ol > li");
+bikeImages.hide().first().show();
+colorButtons.first().addClass("active");
+var activeBike = bikeImages.find(".active");
 
-
-
-
-
+colorButtons.on("click", function () {
+	var el = $(this);
+	var clickedIndex = el.index();
+	var activeBtn = colorButtons.closest(".active").index();
+	if (clickedIndex == activeBtn){
+		return;
+	}else{
+		bikeImages.fadeOut(150, function(){
+			bikeImages.eq(clickedIndex).delay(170).fadeIn(200);
+		});
+		colorButtons.removeClass("active");
+		el.addClass("active");
+	}
+});
 
 
 
