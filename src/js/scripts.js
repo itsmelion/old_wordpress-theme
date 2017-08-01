@@ -75,7 +75,6 @@
 	
 		isMobile = $(window).width() < 567;		
 		
-		
 		dropBikeMenu = function() {
 			var drop;
 			return drop = new _Drop({
@@ -261,6 +260,53 @@ colorButtons.on("click", function () {
 		centerMode: true,
 		mobileFirst: true
 	});
+
+	overviewNav = function(){
+		new Tether({
+			element: $("#NAV-OVERVIEW"),
+			target: $("#nav-attach"),
+			attachment: 'middle center',
+			offset: '52px 0',
+			constraints: [
+				{
+					to: 'window',
+					attachment: 'both',
+					pin: true,
+				}
+			],
+			optimizations: {
+				moveElement: false
+			}
+		});
+	};
+	overviewNav();
+
+	var headerBtn = document.getElementById("top"),
+	specsBtn = document.getElementById("spec"),
+	geometriaBtn = document.getElementById("geo"),
+	galeriaBtn = document.getElementById("gal"),
+	techBtn = document.getElementById("tech"),
+	recomendBtn = document.getElementById("commend");
+
+	headerBtn.onclick = function() {	
+	TweenLite.to(window, 1, {scrollTo:"#BIKE-OVERVIEW",offsetY:240});
+	}
+	specsBtn.onclick = function() {
+	TweenLite.to(window, 1, {scrollTo:{y:"#especificacoes", offsetY:140}});
+	}
+	geometriaBtn.onclick = function() {
+	TweenLite.to(window, 1, {scrollTo:{y:"#geometria", offsetY:140}});
+	}
+	galeriaBtn.onclick = function() {
+	TweenLite.to(window, 1, {scrollTo:{y:"#GALERIA", offsetY:140}});
+	}
+	techBtn.onclick = function() {
+	TweenLite.to(window, 1, {scrollTo:{y:"#TECNOLOGIA", offsetY:140}});
+	}
+	recomendBtn.onclick = function() {
+	TweenLite.to(window, 1, {scrollTo:{y:"#RECOMENDADAS", offsetY:140}});
+	}
+
 	$('#GALERIA').slick({	
 		infinite: true,
 		slidesToShow: 3,

@@ -14,15 +14,14 @@
 <header id="post-<?php the_ID(); ?>" class="post-header">
 	<div class="flex-initial"><h1><?php the_title(); ?><?php the_field('bold-title'); ?></h1></div>
 </header>
-
-<aside id="NAV-OVERVIEW" class="layout-row-wrap">
-	<li>Dropdown pra outras páginas</li>
-	<li><?php the_title(); ?><?php the_field('bold-title'); ?></li>
-	<li>Especificações</li>
-	<li>Geometria</li>
-	<li>Tecnologia</li>
-	<li>Galeria</li>
-	<li>Mais produtos</li>
+<span id="nav-attach"></span>
+<aside id="NAV-OVERVIEW" class="layout-row-wrap-around">
+	<li id="top"><?php the_title(); ?><?php the_field('bold-title'); ?></li>
+	<li id="spec">Especificações</li>
+	<li id="geo">Geometria</li>
+	<li id="tech">Tecnologia</li>
+	<li id="gal">Galeria</li>
+	<li id="commend">Mais produtos</li>
 </aside>
 
 <section id="BIKE-OVERVIEW" class="layout-row-between wrap">
@@ -78,88 +77,103 @@
 
 </section>
 
+<section class="tecnologia-h1">
+<h1>ESPECIFICAÇÕES</h1>
+</section>
 <section id="SPECS" class="layout-column">
 
-	<div id="especificacoes" class="layout-row-wrap-around">
-
-	<?php if( have_rows('specs') ):
-
-    while ( have_rows('specs') ) : the_row();
-
-			if( get_row_layout() == 'roda' ):
-				if( have_rows('roda') ): echo '<table><tbody><th colspan="2">RODA</th>';
-					while ( have_rows('roda') ) : the_row();
-
-					$spec_name = get_sub_field('spec_name');
-					$spec_data = get_sub_field('spec_data');
-
-					echo '<tr><td>' . $spec_name . '</td><td>' . $spec_data . '</td></tr>';
-
+<div id="especificacoes">
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<?php if( have_rows('specs') ):
+					while ( have_rows('specs') ) : the_row();
+					if( get_row_layout() == 'Conjunto do quadro' ):
+					if( have_rows('quadro') ): echo '<table><tbody><th colspan="2">Conjunto do Quadro</th>';
+						while ( have_rows('quadro') ) : the_row();
+						$spec_name = get_sub_field('spec_name');
+						$spec_data = get_sub_field('spec_data');
+						echo '<tr><td>' . $spec_name . '</td><td>' . $spec_data . '</td></tr>';
+						endwhile;
+						echo '</tbody></table>';
+					endif;
+					endif;	
 					endwhile;
-					echo '</tbody></table>';
-
-				endif;
-			endif;
-
-			if( get_row_layout() == 'Transmissão' ):
-				if( have_rows('transmissao') ): echo '<table><tbody><th colspan="2">Transmissão</th>';
-					while ( have_rows('transmissao') ) : the_row();
-
-					$spec_name = get_sub_field('spec_name');
-					$spec_data = get_sub_field('spec_data');
-
-					echo '<tr><td>' . $spec_name . '</td><td>' . $spec_data . '</td></tr>';
-
+					else : echo '<p>no layouts found :/</p>';
+					endif; ?>
+				</td>
+				<td>
+				<?php if( have_rows('specs') ):
+				 while ( have_rows('specs') ) : the_row();
+					if( get_row_layout() == 'roda' ):
+						if( have_rows('roda') ): echo '<table><tbody><th colspan="2">RODA</th>';
+							while ( have_rows('roda') ) : the_row();
+							$spec_name = get_sub_field('spec_name');
+							$spec_data = get_sub_field('spec_data');
+							echo '<tr><td>' . $spec_name . '</td><td>' . $spec_data . '</td></tr>';
+							endwhile;
+							echo '</tbody></table>';
+					endif;
+					endif;
 					endwhile;
-					echo '</tbody></table>';
-
-				endif;
-			endif;
-
-			if( get_row_layout() == 'Conjunto do quadro' ):
-				if( have_rows('quadro') ): echo '<table><tbody><th colspan="2">Conjunto do Quadro</th>';
-					while ( have_rows('quadro') ) : the_row();
-
-					$spec_name = get_sub_field('spec_name');
-					$spec_data = get_sub_field('spec_data');
-
-					echo '<tr><td>' . $spec_name . '</td><td>' . $spec_data . '</td></tr>';
-
-					endwhile;
-					echo '</tbody></table>';
-
-				endif;
-			endif;
-
-			if( get_row_layout() == 'Componentes' ):
-				if( have_rows('comps') ): echo '<table><tbody><th colspan="2">Componentes</th>';
-					while ( have_rows('comps') ) : the_row();
-
-					$spec_name = get_sub_field('spec_name');
-					$spec_data = get_sub_field('spec_data');
-
-					echo '<tr><td>' . $spec_name . '</td><td>' . $spec_data . '</td></tr>';
-
-					endwhile;
-					echo '</tbody></table>';
-
-				endif;
-			endif;
-
-			if( get_row_layout() == 'Garantia' ):
-				$garantia = get_sub_field('warranty');
-				if( $garantia ):
-					echo '<table><tbody><th colspan="2">Garantia</th>';
-					echo '<tr><td>' . $garantia . '</td></tr>';
-					echo '</tbody></table>';
-				endif;
-			endif;
-
-    endwhile;
-	else : echo '<h1>no layouts found :/</h1>';
-	endif; ?>
+				endif; ?>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<?php if( have_rows('specs') ):
+					while ( have_rows('specs') ) : the_row();
+					if( get_row_layout() == 'Transmissão' ):
+						if( have_rows('transmissao') ): echo '<table><tbody><th colspan="2">Transmissão</th>';
+							while ( have_rows('transmissao') ) : the_row();
 		
-	</div>
+							$spec_name = get_sub_field('spec_name');
+							$spec_data = get_sub_field('spec_data');
+		
+							echo '<tr><td>' . $spec_name . '</td><td>' . $spec_data . '</td></tr>';
+		
+							endwhile;
+							echo '</tbody></table>';
+		
+						endif;
+					endif;
+					endwhile;
+				endif; ?>
+				</td>
+				<td>
+					<?php if( have_rows('specs') ):
+						while ( have_rows('specs') ) : the_row();
+						if( get_row_layout() == 'Componentes' ):
+							if( have_rows('comps') ): echo '<table><tbody><th colspan="2">Componentes</th>';
+								while ( have_rows('comps') ) : the_row();
+			
+								$spec_name = get_sub_field('spec_name');
+								$spec_data = get_sub_field('spec_data');
+			
+								echo '<tr><td>' . $spec_name . '</td><td>' . $spec_data . '</td></tr>';
+			
+								endwhile;
+								echo '</tbody></table>';
+			
+							endif;
+						endif;
+						endwhile; endif; ?>
+					</td>
+			</tr>
+		</tbody>
+	</table>
+	<?php if( have_rows('specs') ):
+while ( have_rows('specs') ) : the_row();
+if( get_row_layout() == 'Garantia' ):
+	$garantia = get_sub_field('warranty');
+	if( $garantia ):
+		echo '<h2>Garantia</h2>';
+		echo '<p>' . $garantia . '</p>';
+	endif;
+	endif;
+endwhile; endif; ?>
+</div>
 
 	<div id="geometria" class="layout-row-center-wrap">
 		<div class="geometria-design">
@@ -192,10 +206,32 @@
 	</div>
 </section>
 
+<section class="tecnologia-h1">
+<h1>TECNOLOGIA</h1>
+</section>
 <section id="TECNOLOGIA">
-	<h1>tecnologia</h1>
+<div class="layout-row-center-wrap">
+<?php $tech = get_field("tecnologia");	if( $tech ): ?>
+<?php foreach( $tech as $post): ?>
+<ul class="flex-25 layout-row-center-nowrap">
+<?php setup_postdata($post); ?>
+<li>
+	<?php the_post_thumbnail('thumbnail'); ?>
+</li>
+<li>
+	<h3><?php the_title(); ?></h3>
+	<span><?php the_content(); ?></span>
+</li>
+</ul>
+<?php endforeach; ?>
+<?php wp_reset_postdata(); ?>
+<?php endif; ?>
+</div>
 </section>
 
+<section class="tecnologia-h1" style="text-align: right">
+<h1 style="width: 100%">GALERIA</h1>
+</section>
 <section id="GALERIA">
 	<?php $images = get_field('galeria');
 
@@ -212,6 +248,9 @@
 	<?php endif; ?>
 </section>
 
+<section class="tecnologia-h1">
+<h1>OUTROS MODELOS</h1>
+</section>
 <section id="RECOMENDADAS" class="layout-row-around">
  <?php $bikes_afins = get_field('bikes_afins');
 	if( $bikes_afins ): ?>

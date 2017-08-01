@@ -70,6 +70,9 @@
   position: absolute;
   bottom: 0;
   list-style: none;
+  max-width: 100%;
+  overflow: hidden;
+  flex-wrap: wrap;
   display: flex;
   align-content: center;
   align-items: center;

@@ -1,8 +1,9 @@
 <?php get_header(); ?>
 
 <section class="page-content layout-row-center wrap" id="bike-list" role="main" >
-	<?php if ( have_posts() ):
-			while ( have_posts() ) : the_post();
+<?php $query = new WP_Query( 'cat=-11' ); ?>
+	<?php if ( $query->have_posts() ):
+			while ( $query->have_posts() ) : $query->	the_post();
 				get_template_part( 'loop', get_post_format() );
 			endwhile;
 		else :

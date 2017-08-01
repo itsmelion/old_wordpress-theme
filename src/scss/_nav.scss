@@ -10,10 +10,12 @@
   li{
     list-style: none;
     margin-right: $radius;
+    z-index: 1020;
     a{
       position: relative;
       padding: $radius;
       height: 100%;
+      z-index: 1020;
       width: 100%;
       display: flex;
       color: white;
@@ -34,6 +36,7 @@
     min-height: 6*$radius;
     line-height: 6*$radius; 
     border-radius: $radius/2;
+    z-index: 1020;
     @include transition;
 		&:hover{
 			background-color: rgba(black, .3);
@@ -44,6 +47,7 @@
 	}
   .menu-item-has-children{
     position: relative;
+    z-index: 1020;
     a{padding-right: 6*$radius;}
     &::after{
       content: '';
@@ -77,4 +81,9 @@
       }
     }
   }
+}
+
+.drop-element{
+  margin-top: 3pt;
+  z-index: 1000;
 }

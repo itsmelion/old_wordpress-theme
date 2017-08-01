@@ -93,7 +93,7 @@ gulp.task('serve', () => {
   runSequence(['clean'], ['styles', 'scripts', 'fonts', 'images'], () => {
     browserSync.init({
       notify: true,
-      proxy: "localhost/sense/"
+      proxy: "localhost/sense-backup/"
     });
 
     gulp.watch([
