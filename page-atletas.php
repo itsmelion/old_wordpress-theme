@@ -3,32 +3,34 @@
 <?php get_header(); ?>
 
 <?php
-$image = get_field('cover');
+$cover = get_field('cover');
 $cover2 = get_field('cover_2');
 $sessoes = get_field('sessoes');
 ?>
+<?php if( $cover ): ?>
 <style>
   .page-template-page-atletas, .page-template-page-atletas-php header{
-    background-image: url('<?php echo $image['url']; ?>')
+    background-image: url('<?php echo $cover['url']; ?>')
   }
   @media screen and (max-width: 48.9em){
     .page-template-page-atletas, .page-template-page-atletas-php header{
-      background-image: url('<?php echo $image['sizes']['medium']; ?>')
+      background-image: url('<?php echo $cover['sizes']['medium']; ?>')
     }
   }
 </style>
-<header>
-
-
-<!--   <video poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/polina.jpg" id="bgvid" playsinline autoplay muted>
-  <source src="http://thenewcode.com/assets/videos/polina.webm" type="video/webm">
-  <source src="http://thenewcode.com/assets/videos/polina.mp4" type="video/mp4">
-  </video> -->
-</header>
+<header></header>
+<?php endif;?>
 
 <section class="tecnologia-h1" style="padding: 0 0 0 0">
   <h1><?php the_title() ?></h1>
 </section>
+
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?> 
+   <?php the_content(); ?>
+<?php endwhile; else: ?>
+   <?php _e( 'Sorry, no pages matched your criteria.', 'textdomain' ); ?>
+<?php endif; ?>
+
 <?php if( have_rows('sessoes') ):
   while ( have_rows('sessoes') ) : the_row();
    $foto = get_sub_field('foto_menor');
@@ -61,4 +63,11 @@ $sessoes = get_field('sessoes');
 <?php endif;?>
 
 
+<div>
+  <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?> 
+  <?php the_content(); ?>
+  <?php endwhile; else: ?>
+  <?php _e( 'Sorry, no pages matched your criteria.', 'textdomain' ); ?>
+  <?php endif; ?>
+</div>
 <?php get_footer();?>

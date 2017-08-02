@@ -1,3 +1,5 @@
+"use strict";
+
 (function ($) {
 	/* $(window).on('load', function() { // makes sure the whole site is loaded 
 		$('#loader').fadeOut(); // will first fade out the loading animation 
@@ -55,17 +57,6 @@
 			$('#submenu-sense').slideUp( "fast" );
 		}
 	); */
-
-
-
-
-
-
-
-
-
-
-
 
 		var init, isMobile, setupExamples, _Drop;
 	
@@ -362,4 +353,4 @@ colorButtons.on("click", function () {
 		}
 	}) */
 
-})(jQuery);	
+})(jQuery);

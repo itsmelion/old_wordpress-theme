@@ -6,7 +6,7 @@
 		<li><a href="<?php echo home_url();?>/garantia">Garantia</a></li>
 		<li><a href="<?php echo home_url();?>/demotour">Fale conosco</a></li>	
 		<li>
-			<a class="btn" href="<?php echo home_url();?>/register">Registre sua bike</a>
+			<a class="footer-cta" href="<?php echo home_url();?>/register">Registre sua bike</a>
 		</li>
 	</ul>
 	<ul class="footer-links">

@@ -21,6 +21,11 @@
     }
   }
 }
+.footer-cta{
+  background-color: $main-color;
+  padding: .4em .8em;
+  border-radius: $radius/2;
+}
 #dev-footer{
   position: relative;
   height: 30pt;
