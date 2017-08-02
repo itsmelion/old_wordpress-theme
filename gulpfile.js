@@ -1,6 +1,21 @@
+var dev = true;
+
+var config = {
+  dist:'./dist',
+  src: './src',
+  styles:{
+    main: './src/scss/style.scss'
+  },
+  js: {
+      src: './src/js/scripts.js',       // Entry point
+      outputDir: './dist/js/',  // Directory to save bundle to
+      mapDir: './maps/',      // Subdirectory to save maps to
+      outputFile: 'scripts.js' // Name to use for bundle
+  },
+};
 var project 		= 'neat', // Project name, used for build zip.
 url 			= 'neat.dev', // Local Development URL for BrowserSync. Change as-needed.
-bower 			= './assets/bower_components/'; // Not truly using this yet, more or less playing right now. TO-DO Place in Dev branch
+bower 			= './bower_components/'; // Not truly using this yet, more or less playing right now. TO-DO Place in Dev branch
 build 			= './buildtheme/', // Files that you want to package into a zip go here
 buildInclude 	= [
           // include common file types
@@ -23,7 +38,7 @@ buildInclude 	= [
           // exclude files and folders
           '!node_modules/**/*',
           '!style.css.map',
-          '!'+config.src+'/*'
+          '!src/*'
 
         ];
 
@@ -34,17 +49,18 @@ const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 const merge      = require('merge');
 const rename     = require('gulp-rename');
-const filter       = require('gulp-filter'),
-const newer        = require('gulp-newer'),
-const notify       = require('gulp-notify'),
-const ignore       = require('gulp-ignore'),
-const zip          = require('gulp-zip'),
-const cache        = require('gulp-cache'),
+const filter       = require('gulp-filter');
+const newer        = require('gulp-newer');
+const notify       = require('gulp-notify');
+const ignore       = require('gulp-ignore');
+const zip          = require('gulp-zip');
+const cache        = require('gulp-cache');
 const imagemin = require('gulp-imagemin');
 const gulpLoadPlugins = require('gulp-load-plugins');
 const browserSync = require('browser-sync').create();
 const del = require('del');
 const concat = require('gulp-concat');
+const uglify = require('gulp-uglify');
 const autoprefixer = require('autoprefixer');
 const postcss = require('gulp-postcss');
 const mqpacker = require('css-mqpacker');
@@ -53,22 +69,16 @@ const {phpMinify} = require('@cedx/gulp-php-minify');
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
-var dev = true;
-
-var config = {
-  dist:'./dist',
-  src: './src',
-  styles:{
-    main: config.src+'/scss/style.scss'
-  },
-  js: {
-      src: config.src+'/js/scripts.js',       // Entry point
-      outputDir: './dist/js/',  // Directory to save bundle to
-      mapDir: './maps/',      // Subdirectory to save maps to
-      outputFile: 'scripts.js' // Name to use for bundle
-  },
-};
-
+gulp.task('scripts'),()=>{
+    return gulp.src(['./src/js/scripts.js'])
+    .pipe(concat('scripts.js'))
+    .pipe(uglify())
+    .pipe(rename( {
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest('dist/js'))
+    .pipe(notify({ message: 'scripts complete', onLast: true }));
+}
 gulp.task('styles', () => {
   return gulp.src(config.styles.main)
     .pipe($.sass.sync({
@@ -84,42 +94,6 @@ gulp.task('styles', () => {
     .pipe(reload({stream:true}));
 });
 
-function bundle (bundler) {
-    // Add options to add to "base" bundler passed as parameter
-  bundler
-    .bundle()
-    .pipe(source(config.js.src))
-    .pipe(buffer())
-    .pipe($.if(!dev, $.uglify({
-      compress: {
-        drop_console: true
-      }
-    })))
-    .pipe(rename(config.js.outputFile))
-    .pipe($.sourcemaps.init({ loadMaps : true }))
-    .pipe($.sourcemaps.write(config.js.mapDir))
-    .pipe(gulp.dest(config.js.outputDir))        // Save 'bundle' to build/
-    .pipe(reload({stream: true}));
-              
-}
-gulp.task('scripts'),()=>{
-    return gulp.src([bower+'**/*.js', config.js.src])
-    .pipe(concat('scripts.js'))
-    .pipe(uglify())
-    .pipe(rename( {
-      basename: "scripts",
-      suffix: '.min'
-    }))
-    .pipe(gulp.dest(config.js.outputDir))
-    .pipe(notify({ message: 'scripts complete', onLast: true }));
-}
-gulp.task('browserify', () => {
-
-  var bundler = browserify(config.js.src)
-  .transform(babelify, { presets : [ 'es2015' ] });
-  bundle(bundler);
-    
-});
 
 gulp.task('php', () => {
   gulp.src('./**/*.php', {read: false})

@@ -9,49 +9,41 @@
 
 get_header(); ?>
 
-	<section class="page-content primary" role="main"><?php
+<section class="search-title tecnologia-h1">
+	<h1><?php printf( __( 'Search Results for: %s', 'sense' ), get_search_query() ); ?></h1>
 
-		if ( have_posts() ) : ?>
+	<div class="second-search">
+		<p>
+			<?php _e( 'Not what you searched for? Try again with some different keywords.', 'sense' ); ?>
+		</p>
 
-			<div class="search-title">
-				<h1 ><?php printf( __( 'Search Results for: %s', 'sense' ), get_search_query() ); ?></h1>
+		<?php get_search_form(); ?>
+	</div>
+</section>
 
-				<div class="second-search">
-					<p>
-						<?php _e( 'Not what you searched for? Try again with some different keywords.', 'sense' ); ?>
-					</p>
+<section class="page-content primary" role="main">
+	<?php if ( have_posts() ) : ?>
+	<?php
 
-					<?php get_search_form(); ?>
-				</div>
-			</div><?php
+		while ( have_posts() ) : the_post();
 
-			while ( have_posts() ) : the_post();
+			get_template_part( 'loop', get_post_format() );
 
-				get_template_part( 'loop', get_post_format() );
-
-				wp_link_pages(
-					array(
-						'before'           => '<div class="linked-page-nav"><p>' . sprintf( __( '<em>%s</em> is separated in multiple parts:', 'sense' ), get_the_title() ) . '<br />',
-						'after'            => '</p></div>',
-						'next_or_number'   => 'number',
-						'separator'        => ' ',
-						'pagelink'         => __( '&raquo; Part %', 'sense' ),
-					)
-				);
-
-			endwhile;
-
+			wp_link_pages(
+				array(
+					'before'           => '<div class="linked-page-nav"><p>' . sprintf( __( '<em>%s</em> is separated in multiple parts:', 'sense' ), get_the_title() ) . '<br />',
+					'after'            => '</p></div>',
+					'next_or_number'   => 'number',
+					'separator'        => ' ',
+					'pagelink'         => __( '&raquo; Part %', 'sense' ),
+				)
+			);
+		endwhile;
 		else :
-
 			get_template_part( 'loop', 'empty' );
+		endif;
+	?>
 
-		endif; ?>
-
-		<div class="pagination">
-
-			<?php get_template_part( 'template-part', 'pagination' ); ?>
-
-		</div>
-	</section>
+</section>
 
 <?php get_footer(); ?>

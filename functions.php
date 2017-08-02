@@ -184,12 +184,12 @@ function sense_enqueue_scripts() {
 	wp_enqueue_style( 'sense-styles', get_stylesheet_uri(), array(), '1.0' );
 	wp_enqueue_script( 'pace', get_template_directory_uri() . '/src/js/pace.min.js', array(), '1.0.2', false );
 	wp_enqueue_script( 'jquery' );
-	/* wp_enqueue_script( 'tether', get_template_directory_uri() . '/node_modules/tether/dist/js/tether.min.js', array(), '1.4.0', true );
-	wp_enqueue_script( 'tether-drop', get_template_directory_uri() . '/node_modules/tether-drop/dist/js/drop.min.js', array(), '1.4.2', true );
-	wp_enqueue_script( 'TweenLite', get_template_directory_uri() . '/node_modules/gsap/TweenLite.js', array(), '1.12.1', true );
-	wp_enqueue_script( 'ScrollToPlugin', get_template_directory_uri() . '/node_modules/gsap/ScrollToPlugin.js', array(), '1.12.1', true );
-	wp_enqueue_script( 'jquery-slick', get_template_directory_uri() . '/dist/js/slick/slick.min.js', array(), '1.6.0', true );
-    wp_enqueue_script( 'lightbox', get_template_directory_uri() . '/dist/js/jquery-photoswipe/jquery.photoswipe-global.js', array(), '1.0', true ); */
+	wp_enqueue_script( 'tether', get_template_directory_uri() . '/bower_components/tether/dist/js/tether.min.js', array(), '1.4.0', true );
+	wp_enqueue_script( 'tether-drop', get_template_directory_uri() . '/bower_components/tether-drop/dist/js/drop.min.js', array(), '1.4.2', true );
+	wp_enqueue_script( 'TweenLite', get_template_directory_uri() . '/bower_components/gsap/src/minified/TweenLite.min.js', array(), '1.12.1', true );
+	wp_enqueue_script( 'ScrollToPlugin', get_template_directory_uri() . '/bower_components/gsap/src/minified/plugins/ScrollToPlugin.min.js', array(), '1.12.1', true );
+	wp_enqueue_script( 'slick-carousel', get_template_directory_uri() . '/bower_components/slick-carousel/slick/slick.min.js', array(), '1.6.0', true );
+    wp_enqueue_script( 'photoswipe', get_template_directory_uri() . '/bower_components/photoswipe/dist/photoswipe.min.js', array(), '1.0', true );
     wp_enqueue_script( 'default-scripts', get_template_directory_uri() . '/dist/js/scripts.js', array(), '1.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'sense_enqueue_scripts' );

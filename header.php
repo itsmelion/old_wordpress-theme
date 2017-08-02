@@ -91,6 +91,16 @@ a:hover{
   background: url('<?php echo get_bloginfo('template_url') ?>/dist/images/arrow.svg');
 }
 </style>
+<script>
+    const bikeMenu = function() {
+		  const html = '<?php	include( locate_template( '/partials/dropdown-bike.html', false, false ) );?>';
+			return html;
+		};
+		const senseMenu = function() {
+			const html = '<?php include( locate_template( '/partials/dropdown-sense.html', false, false ) );?>';
+			return html;
+		};
+  </script>
 </head>
 <body <?php body_class(); ?> >
 
@@ -123,14 +133,3 @@ a:hover{
       )
     ); ?> -->
 </nav>
-
-<script>
-    const bikeMenu = function() {
-		  const html = '<?php	include( locate_template( '/partials/dropdown-bike.html', false, false ) );?>';
-			return html;
-		};
-		const senseMenu = function() {
-			const html = '<?php include( locate_template( '/partials/dropdown-sense.html', false, false ) );?>';
-			return html;
-		};
-  </script>
