@@ -1,0 +1,38 @@
+#footer {
+  background-color: #100d0c;
+  width: 100%;
+  footer{
+    @media #{$grid-sm}{
+      .footer-links{width: 33%}
+    }
+    padding: 5*$radius 0;
+    color: $white7;
+    @include font-size(.85);
+    img{@include icon-small;}
+    .footer-links{
+      .td{
+        font-weight: bold;
+        color: white;
+      }
+      line-height: 4*$radius;
+      padding-left: 4*$radius;
+      text-transform: uppercase;
+      a{color: inherit}
+    }
+  }
+}
+.footer-cta{
+  background-color: $main-color;
+  padding: .4em .8em;
+  border-radius: $radius/2;
+}
+#dev-footer{
+  position: relative;
+  height: 30pt;
+  iframe{
+   width: 100%;
+   height: 100%;
+   position: relative;
+   background-color: #101012;
+  }
+}
