@@ -5,7 +5,7 @@
   "main": "scripts/scripts.js",
   "private": true,
   "engines": {
-    "node": ">=6"
+    "node": ">=8.5.0"
   },
   "scripts": {
     "start": "gulp serve",
@@ -13,32 +13,31 @@
     "compile": "gulp"
   },
   "dependencies": {
-    "flamework": ">=1.0.35",
-    "gsap": "^1.20.2",
-    "photoswipe": "^4.1.2",
-    "slick-carousel": "^1.6.0",
-    "tether": "^1.4.0",
-    "tether-drop": "^1.4.2",
+    "flamework": "latest",
+    "gsap": "latest",
+    "photoswipe": "latest",
+    "slick-carousel": "latest",
     "popper.js": "latest",
     "lazyloadjs": "latest",
-    "vanilla-lazyload": "^8.2.0"
+    "vanilla-lazyload": "latest",
+    "pace-js": "latest"
   },
   "devDependencies": {
     "gulp": "latest",
     "browserify": "latest",
     "babelify": "latest",
     "merge": "latest",
-    "gulp-rename": "^1.2.2",
-    "@cedx/gulp-php-minify": ">=5.1.0",
+    "gulp-rename": "latest",
+    "@cedx/gulp-php-minify": "latest",
     "autoprefixer": "latest",
     "babel-core": "latest",
-    "babel-generator": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
+    "babel-generator": "latest",
+    "babel-preset-env": "latest",
     "browser-sync": "latest",
     "css-mqpacker": "latest",
     "cssnano": "latest",
     "del": "latest",
-    "file-entry-cache": "^2.0.0",
+    "file-entry-cache": "latest",
     "gulp-babel": "latest",
     "gulp-cache": "latest",
     "gulp-concat": "latest",
@@ -54,9 +53,8 @@
     "gulp-size": "latest",
     "gulp-sourcemaps": "latest",
     "gulp-uglify": "latest",
-    "pace-js": "^1.0.2",
     "run-sequence": "latest",
-    "yargs": "^8.0.2"
+    "yargs": "latest"
   },
   "repository": {
     "type": "git",

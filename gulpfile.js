@@ -115,7 +115,7 @@ gulp.task('scripts', () => {
   return gulp.src(source + '/scripts/core/**/*.js')
     .pipe(concat('app.js'))
     .pipe(babel({
-      "presets": ["es2015"]
+      "presets": ["env"]
     }))
     .pipe(gulpif(argv.production, uglify()))
     .pipe(gulp.dest(dist+'/scripts'))
