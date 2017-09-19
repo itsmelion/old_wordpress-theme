@@ -45,6 +45,7 @@
     "gulp-eslint": "latest",
     "gulp-gzip": "latest",
     "gulp-htmlmin": "latest",
+    "html-minifier": "latest",
     "gulp-if": "latest",
     "gulp-imagemin": "latest",
     "gulp-newer": "latest",

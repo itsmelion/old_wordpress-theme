@@ -1,16 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800i');
-
 // Variables
 $base-font: 'Open Sans',
 'Roboto',
 'Helvetica Neue',
 sans-serif;
 $base-line-height: 1.4;
-$base-font-size: 100%;
-// Set standard font sizes in media querys
-html {
-    font-size: $base-font-size;
-}
 
 // Font size mixin for REM output with PX fallback
 @mixin font-size($size) {
