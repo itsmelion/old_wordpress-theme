@@ -1,6 +1,6 @@
-const project 		= 'Planet Expat'; // Project name, used for build zip.
-const appURL 			= 'wp.planetexpat'; // Local Development URL for BrowserSync. Change as-needed.
-const build 			= './theme/'; // Files that you want to package into a zip go here
+const project = 'Planet Expat'; // Project name, used for build zip.
+const appURL = 'wp.planetexpat'; // Local Development URL for BrowserSync. Change as-needed.
+const build = './theme/'; // Files that you want to package into a zip go here
 const source = './src';
 const dist = './build';
 
@@ -11,24 +11,24 @@ const vendors = [
   source + '/vendors/*.js'
 ];
 
-const buildInclude 	= [
-      // include common file types
-      '**/*.php',
-      '**/*.html',
-      '**/*.css',
-      '**/*.js',
-      '**/*.svg',
-      '**/*.ttf',
-      '**/*.otf',
-      '**/*.eot',
-      '**/*.woff',
-      '**/*.woff2',
-      // include specific files and folders
-      'screenshot.png',
-      // exclude files and folders
-      '!node_modules/**/*',
-      '!style.css.map',
-      '!src/*'
+const buildInclude = [
+  // include common file types
+  '**/*.php',
+  '**/*.html',
+  '**/*.css',
+  '**/*.js',
+  '**/*.svg',
+  '**/*.ttf',
+  '**/*.otf',
+  '**/*.eot',
+  '**/*.woff',
+  '**/*.woff2',
+  // include specific files and folders
+  'screenshot.png',
+  // exclude files and folders
+  '!node_modules/**/*',
+  '!style.css.map',
+  '!src/*'
 ];
 const gulp = require('gulp');
 const autoprefixer = require('autoprefixer');
@@ -51,13 +51,25 @@ const runsequence = require('run-sequence');
 const size = require('gulp-size');
 const gzip = require('gulp-gzip');
 const rev = require('gulp-rev');
+const notify = require('gulp-notify');
 const newer = require('gulp-newer');
 const argv = require('yargs').argv;
 const reload = browserSync.reload;
 
 gulp.task('build', () => {
-  runsequence(['vendors', 'scripts', 'coreStyles', 'asyncStyles', 'lazy', 'images'], 'gzip')
+  runsequence([
+    //Scripts
+    'vendors', 'scripts', 'lazy',
+    //Styles
+    'coreStyles', 'asyncStyles',
+    //other
+    'fonts', 'html', 'images'
+  ], 'gzip')
 });
+
+gulp.task('zip', () => {
+  runsequence('buildFiles', 'buildZip')
+})
 
 gulp.task('serve', () => {
   runsequence('build', () => {
@@ -118,42 +130,47 @@ gulp.task('scripts', () => {
       "presets": ["env"]
     }))
     .pipe(gulpif(argv.production, uglify()))
-    .pipe(gulp.dest(dist+'/scripts'))
+    .pipe(gulp.dest(dist + '/scripts'))
     .pipe(reload({
       stream: true
     }))
-    .pipe(notify({ message: 'scripts complete', onLast: true }));
+    .pipe(notify({
+      message: 'scripts complete',
+      onLast: true
+    }));
 });
 
 gulp.task('vendors', () => {
   return gulp.src(vendors)
     .pipe(concat('vendors.js'))
     .pipe(gulpif(argv.production, uglify()))
-    .pipe(gulp.dest(dist+'/scripts'))
+    .pipe(gulp.dest(dist + '/scripts'))
     .pipe(reload({
       stream: true
     }))
-    .pipe(notify({ message: 'scripts complete', onLast: true }));
-    ;
+    .pipe(notify({
+      message: 'scripts complete',
+      onLast: true
+    }));;
 });
 
 gulp.task('lazy', () => {
   return gulp.src(source + '/scripts/lazy/*.js')
     .pipe(concat('lazy.js'))
     .pipe(gulpif(argv.production, uglify()))
-    .pipe(gulp.dest(dist+'/scripts'))
+    .pipe(gulp.dest(dist + '/scripts'))
     .pipe(reload({
       stream: true
     }));
 });
 
 gulp.task('html', () => {
-  return gulp.src(source+'/components/**/*.html')
+  return gulp.src(source + '/components/**/*.html')
     .pipe(htmlmin({
       collapseWhitespace: true,
       minifyCSS: true,
       minifyJS: true,
-      ignoreCustomFragments: [ /<%[\s\S]*?%>/, /<\?[\s\S]*?\?>/ ],
+      ignoreCustomFragments: [/<%[\s\S]*?%>/, /<\?[\s\S]*?\?>/],
       processConditionalComments: false,
       removeComments: true,
       removeEmptyAttributes: true,
@@ -163,7 +180,7 @@ gulp.task('html', () => {
       sortClassName: true,
       useShortDoctype: true
     }))
-    .pipe(gulp.dest(dist+'/html/'));
+    .pipe(gulp.dest(dist + '/components/'));
 });
 
 gulp.task('images', () => {
@@ -188,28 +205,36 @@ gulp.task('gzip', () => {
 
 
 gulp.task('fonts', () => {
-  return gulp.src('**/*.{eot,svg,ttf,woff,woff2}')
-    .pipe(gulp.dest(dist+'/fonts'));
+  return gulp.src(source + '/fonts/**/*.{eot,svg,ttf,woff,woff2}')
+    .pipe(gulp.dest(dist + '/fonts'));
 });
 
 
 gulp.task('clear', function () {
   cache.clearAll();
- });
-gulp.task('clean', function() {
-  return 	gulp.src(['**/.sass-cache','**/.DS_Store'], { read: false })
-        del.bind(null, ['.tmp', dist])
-        .pipe(ignore('node_modules/**'))
- });
- 
-gulp.task('buildFiles', function() {
-  return 	gulp.src(buildInclude)
-        .pipe(gulp.dest(build))
-        .pipe(notify({ message: 'Copy from buildFiles complete', onLast: true }));
+});
+gulp.task('clean', function () {
+  return gulp.src(['**/.sass-cache', '**/.DS_Store'], {
+    read: false
+  })
+  del.bind(null, ['.tmp', dist])
+    .pipe(ignore('node_modules/**'))
+});
+
+gulp.task('buildFiles', function () {
+  return gulp.src(buildInclude)
+    .pipe(gulp.dest(build))
+    .pipe(notify({
+      message: 'Copy from ' + buildInclude + 'to' + build + 'complete',
+      onLast: true
+    }));
 });
 gulp.task('buildZip', function () {
-  return 	gulp.src(build+'/**/')
-        .pipe(zip(project+'.zip'))
-        .pipe(gulp.dest('./'))
-        .pipe(notify({ message: 'Zip task complete', onLast: true }));
- });
+  return gulp.src(build)
+    .pipe(zip(project + '.zip'))
+    .pipe(gulp.dest('./'))
+    .pipe(notify({
+      message: 'Theme built and zipped',
+      onLast: true
+    }));
+});

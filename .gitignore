@@ -23,6 +23,7 @@ grunt/.sass-cache
 /grunt/.sass-cache
 
 dist/
+build/
 ./dist
 
 yarn.lock
