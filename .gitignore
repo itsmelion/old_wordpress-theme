@@ -27,3 +27,4 @@ build/
 ./dist
 
 yarn.lock
+package-lock.json

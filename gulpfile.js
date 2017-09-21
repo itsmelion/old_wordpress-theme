@@ -7,8 +7,7 @@ const dist = './build';
 const vendors = [
   "./node_modules/jquery/dist/jquery.js",
   "./node_modules/gsap/TweenLite.js",
-  "./node_modules/jquery.cookie/jquery.cookie.js",
-  source + '/vendors/*.js'
+  source + '/scripts/vendors/*.js'
 ];
 
 const buildInclude = [
@@ -76,7 +75,7 @@ gulp.task('serve', () => {
     browserSync.init({
       proxy: appURL,
       notify: true,
-      open: false,
+      open: true,
       port: 9000
     });
 
@@ -92,7 +91,7 @@ gulp.task('serve', () => {
 });
 
 gulp.task('coreStyles', () => {
-  return gulp.src(source + '/styles/style.scss')
+  return gulp.src(source + '/scss/style.scss')
     .pipe(sass.sync({
       outputStyle: 'expanded',
       precision: 3
@@ -101,14 +100,14 @@ gulp.task('coreStyles', () => {
       safe: true,
       autoprefixer: false
     })]))
-    .pipe(gulp.dest(dist))
+    .pipe(gulp.dest('./'))
     .pipe(reload({
       stream: true
     }));
 });
 
 gulp.task('asyncStyles', () => {
-  return gulp.src(source + '/async.scss')
+  return gulp.src(source + '/scss/async.scss')
     .pipe(sass.sync({
       outputStyle: 'expanded',
       precision: 3
@@ -198,7 +197,7 @@ gulp.task('images', () => {
 });
 
 gulp.task('gzip', () => {
-  return gulp.src([dist + '/*.js', dist + './dist/*.css'])
+  return gulp.src([dist + '/*.js', dist + './dist/*.css', './style.css'])
     .pipe(gzip())
     .pipe(gulp.dest(dist));
 });

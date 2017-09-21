@@ -9,7 +9,8 @@
   },
   "scripts": {
     "start": "gulp serve",
-    "compile": "gulp build --production && gulp zip"
+    "prod": "gulp serve --production",
+    "compile": "gulp build --production && gulp zip && gulp buildFiles && gulp buildZip"
   },
   "dependencies": {
     "flamework": "latest",
@@ -44,10 +45,10 @@
     "gulp-if": "latest",
     "gulp-imagemin": "latest",
     "gulp-newer": "latest",
-    "gulp-notify": "^3.0.0",
+    "gulp-notify": "latest",
     "gulp-postcss": "latest",
     "gulp-rename": "latest",
-    "gulp-rev": "^8.0.0",
+    "gulp-rev": "latest",
     "gulp-sass": "latest",
     "gulp-size": "latest",
     "gulp-sourcemaps": "latest",
