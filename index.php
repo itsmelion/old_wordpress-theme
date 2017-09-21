@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<section class="page-content layout-row-center wrap" id="bike-list" role="main" >
+<section class="page-content layout-row-center wrap" role="main" >
 <?php $query = new WP_Query( 'cat=-11' ); ?>
 	<?php if ( $query->have_posts() ):
 			while ( $query->have_posts() ) : $query->	the_post();

@@ -4,12 +4,13 @@ $base-font: 'Open Sans',
 'Helvetica Neue',
 sans-serif;
 $base-line-height: 1.4;
-
+$base-font-size: 100%;
 // Font size mixin for REM output with PX fallback
 @mixin font-size($size) {
     font-size: $size * $base-font-size;
     font-size: #{$size}rem;
 }
+
 
 /******************************************************************************\
 	Standard font styling
@@ -66,11 +67,13 @@ h1 {
     font-style: oblique;
     letter-spacing: -.05em;
     @media screen and (max-width: 840px) {
-      font-size: 8vw;
+        font-size: 8vw;
     }
 }
 
-h2 { @include font-size(1.8); }
+h2 {
+    @include font-size(1.8);
+}
 
 h3 {
     @include font-size(1.1);

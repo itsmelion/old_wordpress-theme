@@ -25,6 +25,8 @@ grunt/.sass-cache
 dist/
 build/
 ./dist
+./style.css
+./styles.css
 
 yarn.lock
 package-lock.json

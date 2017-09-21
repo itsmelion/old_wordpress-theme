@@ -1,5 +1,5 @@
 const project = 'Planet Expat'; // Project name, used for build zip.
-const appURL = 'wp.planetexpat'; // Local Development URL for BrowserSync. Change as-needed.
+const appURL = 'http://wp.planetexpat/'; // Local Development URL for BrowserSync. Change as-needed.
 const build = './theme/'; // Files that you want to package into a zip go here
 const source = './src';
 const dist = './build';
@@ -62,8 +62,8 @@ gulp.task('build', () => {
     //Styles
     'coreStyles', 'asyncStyles',
     //other
-    'fonts', 'html', 'images'
-  ], 'gzip')
+    'fonts', 'images'
+  ])
 });
 
 gulp.task('zip', () => {
@@ -82,10 +82,10 @@ gulp.task('serve', () => {
     gulp.watch([
       source + '/**/*.html',
       source + '/images/**/*',
-      source + '/**/*.php'
+      './**/*.php'
     ]).on('change', reload);
 
-    gulp.watch(source + '/styles/**/*.scss', ['coreStyles', 'asyncStyles']);
+    gulp.watch(source + '/scss/**/*.scss', ['coreStyles', 'asyncStyles']);
     gulp.watch(source + '/scripts/**/*.js', ['scripts', 'vendors', 'lazy']);
   });
 });
@@ -166,18 +166,18 @@ gulp.task('lazy', () => {
 gulp.task('html', () => {
   return gulp.src(source + '/components/**/*.html')
     .pipe(htmlmin({
-      collapseWhitespace: true,
-      minifyCSS: true,
-      minifyJS: true,
+      collapseWhitespace: false,
+      minifyCSS: false,
+      minifyJS: false,
       ignoreCustomFragments: [/<%[\s\S]*?%>/, /<\?[\s\S]*?\?>/],
       processConditionalComments: false,
-      removeComments: true,
-      removeEmptyAttributes: true,
-      removeStyleLinkTypeAttributes: true,
-      removeScriptTypeAttributes: true,
-      sortAttributes: true,
-      sortClassName: true,
-      useShortDoctype: true
+      removeComments: false,
+      removeEmptyAttributes: false,
+      removeStyleLinkTypeAttributes: false,
+      removeScriptTypeAttributes: false,
+      sortAttributes: false,
+      sortClassName: false,
+      useShortDoctype: false
     }))
     .pipe(gulp.dest(dist + '/components/'));
 });
@@ -197,7 +197,7 @@ gulp.task('images', () => {
 });
 
 gulp.task('gzip', () => {
-  return gulp.src([dist + '/*.js', dist + './dist/*.css', './style.css'])
+  return gulp.src([dist + '/**/*.js', dist + '/**/*.css', './style.css'])
     .pipe(gzip())
     .pipe(gulp.dest(dist));
 });

@@ -3,7 +3,7 @@ if( function_exists('acf_add_options_page') ) {
 	
 	acf_add_options_page(array(
 		'page_title' 	=> 'Configurações Gerais',
-		'menu_title'	=> 'Sense: Geral',
+		'menu_title'	=> 'General Settings',
 		'menu_slug' 	=> 'general-settings',
 		'capability'	=> 'edit_posts',
 		'redirect'		=> false
@@ -11,13 +11,13 @@ if( function_exists('acf_add_options_page') ) {
 	
 	acf_add_options_sub_page(array(
 		'page_title' 	=> 'Theme Header Settings',
-		'menu_title'	=> 'Cabeçalho',
+		'menu_title'	=> 'Headings',
 		'parent_slug'	=> 'general-settings',
 	));
 	
 	acf_add_options_sub_page(array(
 		'page_title' 	=> 'Theme Footer Settings',
-		'menu_title'	=> 'Rodapé',
+		'menu_title'	=> 'Footer',
 		'parent_slug'	=> 'general-settings',
 	));
 	
@@ -79,36 +79,10 @@ $custom_bg_args = array(
 );
 add_theme_support( 'custom-background', $custom_bg_args );
 
-register_nav_menu( 'main-menu', __( 'Your sites main menu', 'sense' ) );
-
-if ( function_exists( 'register_sidebars' ) ) {
-	register_sidebar(
-		array(
-			'id' => 'home-sidebar',
-			'name' => __( 'Home widgets', 'sense' ),
-			'description' => __( 'Shows on home page', 'sense' )
-		)
-	);
-
-	register_sidebar(
-		array(
-			'id' => 'footer-sidebar',
-			'name' => __( 'Footer widgets', 'sense' ),
-			'description' => __( 'Shows in the sites footer', 'sense' )
-		)
-	);
-}
+register_nav_menu( 'main-menu', __( 'Your sites main menu', 'menu' ) );
 
 if ( ! isset( $content_width ) ) $content_width = 1024;
 
-/**
- * Include editor stylesheets
- * @return void
- */
-function sense_editor_style() {
-    add_editor_style( 'css/wp-editor-style.css' );
-}
-add_action( 'init', 'sense_editor_style' );
 
 /******************************************************************************\
 	Scripts and Styles
@@ -177,22 +151,15 @@ function clean_custom_menu( $theme_location ) {
     echo $menu_list;
 }
 /**
- * Enqueue sense scripts
+ * Enqueue theme scripts
  * @return void
  */
-function sense_enqueue_scripts() {
+function theme_enqueue_scripts() {
 	wp_enqueue_style( 'sense-styles', get_stylesheet_uri(), array(), '1.0' );
-	wp_enqueue_script( 'pace', get_template_directory_uri() . '/src/js/pace.min.js', array(), '1.0.2', false );
 	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'tether', get_template_directory_uri() . '/bower_components/tether/dist/js/tether.min.js', array(), '1.4.0', true );
-	wp_enqueue_script( 'tether-drop', get_template_directory_uri() . '/bower_components/tether-drop/dist/js/drop.min.js', array(), '1.4.2', true );
-	wp_enqueue_script( 'TweenLite', get_template_directory_uri() . '/bower_components/gsap/src/minified/TweenLite.min.js', array(), '1.12.1', true );
-	wp_enqueue_script( 'ScrollToPlugin', get_template_directory_uri() . '/bower_components/gsap/src/minified/plugins/ScrollToPlugin.min.js', array(), '1.12.1', true );
-	wp_enqueue_script( 'slick-carousel', get_template_directory_uri() . '/bower_components/slick-carousel/slick/slick.min.js', array(), '1.6.0', true );
-    wp_enqueue_script( 'photoswipe', get_template_directory_uri() . '/bower_components/photoswipe/dist/photoswipe.min.js', array(), '1.0', true );
-    wp_enqueue_script( 'default-scripts', get_template_directory_uri() . '/dist/js/scripts.js', array(), '1.0', true );
+    wp_enqueue_script( 'default-scripts', get_template_directory_uri() . '/build/scripts/app.js', array(), '1.0', true );
 }
-add_action( 'wp_enqueue_scripts', 'sense_enqueue_scripts' );
+add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );
 
 
 /******************************************************************************\
@@ -206,12 +173,12 @@ add_action( 'wp_enqueue_scripts', 'sense_enqueue_scripts' );
 function sense_post_meta() {
 	if ( get_post_type() == 'post' ) {
 		echo sprintf(
-			__( 'Posted %s in %s%s by %s. ', 'sense' ),
+			__( 'Posted %s in %s%s by %s. ', 'admin' ),
 			get_the_time( get_option( 'date_format' ) ),
 			get_the_category_list( ', ' ),
-			get_the_tag_list( __( ', <b>Tags</b>: ', 'sense' ), ', ' ),
+			get_the_tag_list( __( ', <b>Tags</b>: ', 'admin' ), ', ' ),
 			get_the_author_link()
 		);
 	}
-	edit_post_link( __( ' (edit)', 'sense' ), '<span class="edit-link">', '</span>' );
+	edit_post_link( __( ' (edit)', 'admin' ), '<span class="edit-link">', '</span>' );
 }
