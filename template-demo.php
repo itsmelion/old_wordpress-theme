@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php /* Template Name: Demo Page Template */ get_header(); ?>
 
 	<main role="main" aria-label="Content">
 		<!-- section -->
@@ -24,23 +24,22 @@
 
 		<?php endwhile; ?>
 
-		<?php	else : get_template_part( 'loop', 'empty' ); endif; ?>
+		<?php else: ?>
+
+			<!-- article -->
+			<article>
+
+				<h2><?php _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h2>
+
+			</article>
+			<!-- /article -->
+
+		<?php endif; ?>
 
 		</section>
 		<!-- /section -->
 	</main>
 
 <?php get_sidebar(); ?>
-<!-- <aside class="post-aside">
-		<?php	wp_link_pages(
-			array(
-				'before'           => '<div class="linked-page-nav"><p>' . sprintf( __( '<em>%s</em> is separated in multiple parts:', 'sense' ), get_the_title() ) . '<br />',
-				'after'            => '</p></div>',
-				'next_or_number'   => 'number',
-				'separator'        => ' ',
-				'pagelink'         => __( '&raquo; Part %', 'sense' ),
-			)
-		); ?>
-	</aside> -->
 
 <?php get_footer(); ?>

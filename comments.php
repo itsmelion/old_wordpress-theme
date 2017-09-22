@@ -1,53 +1,24 @@
-<?php if ( post_password_required() ) { return; } ?>
-
 <div id="comments" class="comments">
+<?php if (post_password_required()) : ?>
+<p><?php _e( 'Post is password protected. Enter the password to view any comments.', 'html5blank' ); ?></p>
+</div>
 
-	<?php if ( have_comments() ) : ?>
+<?php return; endif; ?>
 
-		<h2 class="comments-title">
-			<?php
-				printf(
-					_n( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'sense' ),
-					number_format_i18n( get_comments_number() ),
-					get_the_title()
-				);
-			?>
-		</h2>
+<?php if (have_comments()) : ?>
 
-		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
-		<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
-			<h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'sense' ); ?></h1>
-			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'sense' ) ); ?></div>
-			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'sense' ) ); ?></div>
-		</nav>
-		<?php endif; ?>
+<h2><?php comments_number(); ?></h2>
 
-		<ol class="comment-list">
-			<?php
-				wp_list_comments(
-					array(
-						'style'       => 'ol',
-						'short_ping'  => true,
-						'avatar_size' => 34,
-					)
-				);
-			?>
-		</ol>
+<ul>
+	<?php wp_list_comments('type=comment&callback=html5blankcomments'); // Custom callback in functions.php ?>
+</ul>
 
-		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
-		<nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
-			<h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'sense' ); ?></h1>
-			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'sense' ) ); ?></div>
-			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'sense' ) ); ?></div>
-		</nav>
-		<?php endif; ?>
+<?php elseif ( ! comments_open() && ! is_page() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
 
-		<?php if ( ! comments_open() ) : ?>
-		<p class="no-comments"><?php _e( 'Comments are closed.', 'sense' ); ?></p>
-		<?php endif; ?>
+<p><?php _e( 'Comments are closed here.', 'html5blank' ); ?></p>
 
-	<?php endif; ?>
+<?php endif; ?>
 
-	<?php comment_form(); ?>
+<?php comment_form(); ?>
 
 </div>

@@ -13,14 +13,14 @@
     "compile": "gulp build --production && gulp gzip && gulp zip && gulp buildFiles && gulp buildZip"
   },
   "dependencies": {
-    "flamework": "latest",
+    "flamework": "^1.1.0",
     "gsap": "latest",
-    "photoswipe": "latest",
-    "slick-carousel": "latest",
-    "popper.js": "latest",
     "lazyloadjs": "latest",
-    "vanilla-lazyload": "latest",
-    "pace-js": "latest"
+    "pace-js": "latest",
+    "photoswipe": "latest",
+    "popper.js": "latest",
+    "slick-carousel": "latest",
+    "vanilla-lazyload": "latest"
   },
   "devDependencies": {
     "@cedx/gulp-php-minify": "latest",

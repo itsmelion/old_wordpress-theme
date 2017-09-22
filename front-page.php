@@ -2,7 +2,7 @@
 
 <?php $frontHero = get_field('galeria-home_wide', 'option'); ?>
 
-<header id="front-page" class="layout-column-center">
+<header id="front-page" class="layout-column-center flex-grow" role="banner">
     <!-- <?php foreach( $frontHero as $image ): ?>
       <div class="home-swipe" style="background-image: url('<?php echo $image['sizes']['large']; ?>')"></div>
 		<?php endforeach; ?> -->
@@ -13,5 +13,6 @@
 
 </header>
 
+<?php get_template_part('loop'); ?>
 
 <?php get_footer(); ?>

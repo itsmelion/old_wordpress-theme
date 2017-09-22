@@ -9,8 +9,13 @@
   font-weight: 100;
   text-transform: none;
   color: white;
-  height: 60vh;
+  min-height: 60vh;
   >* {
     z-index: 2;
   }
+}
+
+.post {
+  border: 1pt dashed #cccccc;
+  padding: 1rem;
 }

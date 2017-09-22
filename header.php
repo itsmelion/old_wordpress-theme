@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<title><?php wp_title( ); ?></title>
-	<meta charset="UTF-8" />
+  <title><?php wp_title(''); ?><?php if(wp_title('', false)) { echo ' : '; } ?><?php bloginfo('name'); ?></title>
+	<link href="//www.google-analytics.com" rel="dns-prefetch">
+  <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?>" href="<?php bloginfo('rss2_url'); ?>" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="<?php bloginfo('description'); ?>">
   <meta http-equiv="content-language" content="<?php language_attributes(); ?>">
   <meta http-equiv="content-type" content="text/html;charset=UTF-8">
   <meta name="msapplication-TileImage" content="<?php echo get_bloginfo('template_url') ?>/build/images/favicons/ms-tile.png" />
@@ -30,7 +34,6 @@
 	<meta name="apple-mobile-web-status-bar-style" content="black-translucent">
 	<meta name="theme-color" content="#4f2f21" />
 	<meta name="msapplication-TileColor" content="#4f2f21" />
-  <meta name="description" content="Alia profile" />
   <meta name="keywords" content="Alia web, alia, alia mobile, mobile apps, apps, belo horizonte,
 brazil, brasil, empresa, software" />
 
@@ -84,9 +87,9 @@ a:hover{
 }
 </style>
 </head>
-<body <?php body_class(); ?> >
+<body <?php body_class('layout-column-fill-stretch'); ?> >
 
-<nav class="layout-row-forcenowrap-between main-menu" id="nav">
+<nav class="layout-row-forcenowrap-between main-menu flex" id="nav">
 
   <li class="flex menu-logo">
     <a title="<?php bloginfo( 'description' ); ?>" href="<?php echo home_url();?>" class="hide-sm show-lg">
@@ -96,15 +99,8 @@ a:hover{
     <img src="<?php echo get_bloginfo('template_url') ?>/build/images/logo.svg" alt="<?php bloginfo( 'name' ); ?>"/>
     </a>
   </li>
-    
-    <!-- <?php
-    $nav_menu = wp_nav_menu(
-      array(
-        'container' => 'div',
-        'container_class' => 'flex-noshrink main-menu',
-        'items_wrap' => '<ul class="%2$s layout-row flex-end">%3$s</ul>',
-        'theme_location' => 'main-menu',
-        'fallback_cb' => '__return_false',
-      )
-    ); ?> -->
+  
+  <nav class="nav" role="navigation">
+    <?php html5blank_nav(); ?>
+  </nav>
 </nav>

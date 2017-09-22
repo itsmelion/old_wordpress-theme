@@ -1,14 +1,19 @@
 <?php get_header(); ?>
 
-<section class="page-content layout-row-center wrap" role="main" >
-<?php $query = new WP_Query( 'cat=-11' ); ?>
-	<?php if ( $query->have_posts() ):
-			while ( $query->have_posts() ) : $query->	the_post();
-				get_template_part( 'loop', get_post_format() );
-			endwhile;
-		else :
-			get_template_part( 'loop', 'empty' );
-	endif;?>
-</section>
+	<main role="main" aria-label="Content">
+		<!-- section -->
+		<section>
+
+			<h1><?php _e( 'Latest Posts', 'html5blank' ); ?></h1>
+
+			<?php get_template_part('loop'); ?>
+
+			<?php get_template_part('pagination'); ?>
+
+		</section>
+		<!-- /section -->
+	</main>
+
+<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>
