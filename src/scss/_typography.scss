@@ -1,8 +1,5 @@
 // Variables
-$base-font: 'Open Sans',
-'Roboto',
-'Helvetica Neue',
-sans-serif;
+$base-font: sans-serif;
 $base-line-height: 1.4;
 $base-font-size: 100%;
 // Font size mixin for REM output with PX fallback
@@ -63,8 +60,6 @@ h6 {
 h1 {
     @include font-size(2.5);
     font-size: 4vw;
-    text-transform: uppercase;
-    font-style: oblique;
     letter-spacing: -.05em;
     @media screen and (max-width: 840px) {
         font-size: 8vw;

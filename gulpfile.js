@@ -81,10 +81,11 @@ gulp.task('serve', () => {
 
     gulp.watch([
       source + '/**/*.html',
-      source + '/images/**/*',
+      dist + '/images/**/*',
       './**/*.php'
     ]).on('change', reload);
 
+    gulp.watch(source + '/images/**/*', ['images']);
     gulp.watch(source + '/scss/**/*.scss', ['coreStyles', 'asyncStyles']);
     gulp.watch(source + '/scripts/**/*.js', ['scripts', 'vendors', 'lazy']);
   });
